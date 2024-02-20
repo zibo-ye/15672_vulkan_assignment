@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>15-472-s24: A1 - Scene Graph</title>
+	<style>
+		/* feel free to style your report in a fancier way! */
+
+		@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+		html {
+			background: #505055;
+		}
+
+		body {
+			font-family: 'Quicksand', sans-serif;
+			color: #000;
+			background: #eeeee8;
+			font-size: 15px;
+			margin: 1em auto 50vh auto;
+			padding: 1em 2em 1em 2em;
+			max-width: 45em;
+			border-radius: 4px;
+			box-shadow: 0 0 10px #0008;
+		}
+
+		h1 {
+			font-size: 20px;
+			font-weight: 700;
+		}
+
+		h2 {
+			font-size: 16px;
+			font-weight: 700;
+		}
+
+		h3 {
+			font-size: 16px;
+			font-weight: 400;
+		}
+
+		h4 {
+			font-size: 14px;
+			font-weight: 400;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			margin: 15px 0 0 -10px;
+		}
+
+		p {
+			margin: 5px 0 0 0;
+		}
+
+		.subtitle {
+			display: block;
+			font-size: 16px;
+			font-weight: 400;
+		}
+
+		.placeholder {
+			color: #800;
+			font-style: italic;
+		}
+
+		kbd {
+			display: inline-block;
+			background: #ccc;
+			color: #444;
+			font-style: normal;
+			font-weight: 700;
+			border-radius: 8px;
+			padding: 1px 6px;
+			margin: 1px;
+			border: 1.5px solid #aaa;
+		}
+
+		code {
+			font-family: 'Anonymous Pro', monospace;
+			background: #222;
+			color: #fff;
+			border-radius: 4px;
+			padding: 2px 4px;
+			margin: 1px;
+		}
+
+		code var {
+			color: #ef5;
+			font-style: italic;
+		}
+
+		.atag {
+			font-family: 'Calistoga', serif;
+			font-size: 90%;
+			color: #000;
+			background: #b00;
+
+			display: inline-block;
+			padding: 1px 4px;
+			border-radius: 4px;
+			line-height: 120%;
+		}
+
+		.atag:before {
+			content: '»';
+		}
+
+		.atag.extra {
+			background: #b08;
+		}
+
+		.atag.creative {
+			/* thanks, shout.horse! */
+			background: linear-gradient(0.4turn, #ffe680, #916f6f);
+		}
+	</style>
+</head>
+
+<body>
+	<h1>A1: Scene Viewer
+		<span class="subtitle">by <span class="placeholder">Zibo Ye (ziboy)</span></span>
+	</h1>
+
+	For the A1 assignment, I implemented a scene viewer from scratch that can load and render scenes, and support camera control, frustum culling, and animation. I used C++ for the code and JSON for the scene file format.
+	I implemented all the required features:
+	<ul>
+		<li>Scene loading</li>
+		<li>Scene rendering</li>
+		<li>Camera control</li>
+		<li>Frustum culling</li>
+		<li>Animation</li>
+		<li>Headless mode</li>
+	</ul>
+	I also implemented Indexed Draw for performance improvement.
+
+	<h2>My Animation <span class="atag creative">A1-create</span></h2>
+
+	Here is my animation, a simple animation of the provided sphereflake scene. Here is a screen recording showing
+	it running in real-time:
+	<video controls type="video/mp4" data-fullscreen-container="true" data-popup-wrap-id="h5player-popup-wrap-2ydoq3ap1hb" style="max-width: 100%; height: auto;">
+		<source src="../animation/animation.mp4">
+		Your browser does not support the video tag.
+	</video>
+	The animation is a simple rotation of the sphereflake on every layer from layer 3 to layer 6.
+	I made the animation by grouping every layer's instance and rotating them around the origin of the group.
+	Every 80 frames (3.33 seconds), it rotates 360 degrees around the y-axis. (I used 24fps for the animation)
+
+	<h2>Using the Scene Viewer</h2>
+
+	<h3>Command-line Arguments</h3>
+
+
+	<ul>
+		<li><code>-scene <var>scene.s72</var></code> -- Required. Loads the specified scene in <code>.s72</code> format.</li>
+		<li><code>-camera <var>name</var></code> -- Optional. Uses the named camera to view the scene. Aborts if the camera is not found.</li>
+		<li><code>-physical-device <var>name</var></code> -- Optional. Selects a physical device with the matching <code>VkPhysicalDeviceProperties::deviceName</code>. Aborts if no match is found. Implementation may vary when not specified.</li>
+		<li><code>-drawing-size <var>w</var> <var>h</var></code> -- Optional. Sets window drawable area size in pixels. Aborts if size is not supported. Uses a default size if unspecified.</li>
+		<li><code>-culling <var>mode</var></code> -- Optional. Configures culling mode. Additional modes may be supported.</li>
+		<li><code>-headless <var>events</var></code> -- Optional. Enables headless mode, using <code>events</code> file for input. Requires <code>-drawing-size</code>.</li>
+		<li><code>-list-physical-devices</code> -- Optional. Lists all physical devices and exits.</li>
+		<li><code>-list-instance-extensions</code> -- Optional. Lists Vulkan instance extensions and exits.</li>
+		<li><code>-measure</code> -- Optional. Activates FPS measurement.</li>
+	</ul>
+	
+	<h3>Controls</h3>
+
+	<ul>
+		<li><kbd>LMB + Drag</kbd>: Orbits the camera around the scene, allowing for a panoramic view or detailed inspection from various angles.</li>
+		<li><kbd>F5</kbd>: Toggles between the main camera and a debug camera, providing an alternative perspective for diagnostic purposes or enhanced scene navigation.</li>
+		<li><kbd>W/A/S/D</kbd>: Moves the camera forward (W), left (A), backward (S), and right (D) relative to the camera's current orientation, facilitating navigational control within the 3D environment.</li>
+		<li><kbd>Q/E</kbd>: Elevates (Q) or lowers (E) the camera's position, offering a vertical dimension to scene exploration.</li>
+		<li><kbd>X</kbd>: Resets the user camera to its default state, useful for quickly reverting to a known starting point after extensive navigation adjustments.</li>
+		<li><kbd>TAB</kbd>: Switches to the next available camera, enabling users to cycle through various predefined viewpoints or cameras placed within the scene.</li>
+		<li><kbd>Mouse Drag</kbd>: Rotates the user camera, providing intuitive control over the camera's orientation through click-and-drag mouse movements.</li>
+		<li><kbd>Mouse Scroll</kbd>: Zooms the camera in or out, allowing users to adjust their view's granularity for either a broader overview or a closer examination of scene details.</li>
+	</ul>
+
+	<h2>My Code</h2>
+
+	<h3>Math Library Overview</h3>
+	<p>My math library, contained within the <code>vkm</code> namespace, provides a comprehensive set of mathematical structures and operations essential for 3D graphics applications. Designed with flexibility and efficiency in mind, it caters to a wide range of mathematical needs within the graphics pipeline.</p>
+	<h4>Vector Classes</h4>
+	<p>The core of my math library is the <code>vec</code> template class, representing vectors of arbitrary length (<var>L</var>) and type (<var>T</var>). This design enables the creation of vectors of different dimensions (e.g., <code>vec2</code>, <code>vec3</code>, <code>vec4</code>), all sharing a common base of operations. Each vector class supports basic arithmetic operations, such as addition, subtraction, multiplication, and division, both with other vectors and with scalars.</p>
+	<h4>Matrix Classes</h4>
+	<p>To complement the vector classes, I implemented a <code>mat</code> template class for matrices, supporting common sizes like <code>mat4</code> (4x4 matrices) and <code>mat3</code> (3x3 matrices). These classes are crucial for transformations, projections, and other operations in 3D space, offering functionality for matrix-matrix and matrix-vector multiplication, which are essential for transforming points and vectors in 3D space.</p>
+	<h4>Quaternion Class</h4>
+	<p>For representing rotations, my library includes a <code>quat</code> class, which facilitates smooth interpolation and avoids the gimbal lock issue associated with Euler angles. Quaternions are extensively used for camera orientations and animated transformations within the scene.</p>
+	<h4>Utility Functions</h4>
+	<p>A set of utility functions, such as <code>cross</code>, <code>dot</code>, <code>length</code>, <code>normalize</code>, are provided for vector operations, along with higher-level functions like <code>perspective</code>, <code>lookAt</code>, <code>rotate</code>, <code>scale</code>, and <code>translate</code> for constructing transformation matrices.</p>
+	<h4>Template Specializations</h4>
+	<p>I've specialized the <code>vec</code> template for common cases (<code>vec1</code>, <code>vec2</code>, <code>vec3</code>, <code>vec4</code>) to provide convenient accessors (e.g., <code>x</code>, <code>y</code>, <code>z</code>, <code>w</code>) and ensure optimal performance for these frequently used types.</p>
+	<h4>Efficiency and Reuse</h4>
+	<p>To avoid code duplication and enhance maintainability, my library leverages template programming and inheritance. For instance, all vector operations are defined in a base <code>vec_base</code> class, from which specific <code>vec</code> specializations inherit. This approach allows complex mathematical operations to be implemented once and reused across different vector and matrix types, ensuring code efficiency and ease of maintenance.</p>
+
+	<h3>Vulkan Integration</h3>
+	<p>The <code>VulkanCore</code> class is based on <a href="https://vulkan-tutorial.com/Introduction" target="_blank">Vulkan Tutorial</a> principles, encapsulating Vulkan setup, device selection, and swap chain management. Off-screen rendering is added to support rendering without display output, helping benchmark and off-screen compute task and more.</p>
+	<h4>Setup and Pipeline</h4>
+	<p>Initial setup includes Vulkan instance creation and logical device selection. The rendering pipeline configures shaders, descriptor sets, and command buffers for efficient graphics processing.</p>
+	<h4>Resource Management</h4>
+	<p>Resources such as buffers and images are managed for optimal performance, ensuring proper allocation, usage, and cleanup.</p>
+	<h4>Debugging and Validation</h4>
+	<p>Debugging and validation layers are integrated for issue identification and resolution during development.</p>
+	<h4>Cleanup and Off-Screen Rendering</h4>
+	<p>A comprehensive cleanup process is implemented for resource release upon application exit. The off-screen rendering feature allows for rendering operations detached from the display, helping profiling performance.</p>
+	
+	<h3>Loading Scenes, Mesh Data <span class="atag">A1-load</span></h3>
+	<p>Scene and mesh data are dynamically loaded from JSON files, utilizing a custom parser to interpret scene structure, geometry, materials, and other attributes essential for rendering.</p>
+	<h4>Scene and Mesh Data Storage</h4>
+	<p>Upon application startup, the <code>MainApplication::Startup</code> function initiates scene loading through <code>Scene::loadSceneFromFile</code>. This method constructs a <code>Scene</code> object, storing mesh data, textures, and scene hierarchy as defined in the specified JSON file.</p>
+	<h4>JSON Parsing Approach</h4>
+	<p>The JSON parsing is handled by <code>Utility::json::JsonValue</code> and related classes, which support parsing JSON strings and files into a structured format. These classes offer functionality to deserialize JSON into native C++ structures, enabling easy access to scene parameters and attributes. The parser supports various data types, including strings, numbers, objects, and arrays, providing flexibility in defining scene elements.</p>
+	<h4>Error Handling and Validation</h4>
+	<p>Robust error handling ensures that parsing errors, such as unexpected tokens or type mismatches, are caught and reported, facilitating debugging and scene file correction. </p>
+
+	<h3>Drawing the scene. <span class="atag">A1-show</span></h3>
+	<p>The rendering process in my application involves calculating camera transformations to accurately represent scene perspective and conveying transformation and vertex data to shaders for rendering.</p>
+	<h4>Computing Camera Transformations</h4>
+	<p>Camera transformations are computed using two primary camera types: <code>SceneCamera</code> and <code>UserCamera</code>. For <code>SceneCamera</code>, the view matrix is derived by traversing the scene hierarchy and accumulating transformations. In contrast, <code>UserCamera</code> employs a straightforward approach using the <code>vkm::lookAt</code> function, providing a dynamic viewpoint controlled by user inputs.</p>
+	<h4>Transferring Data to Shaders</h4>
+	<p>The <code>VulkanCore::updateUniformBuffer</code> function updates uniform buffers with the latest camera matrices for each frame. These buffers, mapped to shader uniform variables, ensure that vertex shader receives up-to-date view and projection matrices, enabling the correct transformation of scene geometry based on the active camera's perspective.</p>
+	<p>Below is a screenshot showcasing an example scene rendered by the viewer:</p>
+	<p><img src="./screenshot.png" alt="Viewer Screenshot" style="width:100%;max-width:600px"></p>
+
+	<h3>Handling Interactive Camera and Debug Camera Movement <span class="atag">A1-show</span></h3>
+	<p>My application offers dynamic camera controls for interactive scene exploration and debugging, utilizing both user-controlled and scene defined camera movements.</p>
+	<h4>Event System</h4>
+	<p>My application features a robust event system designed to manage user inputs and system events. The <code>IApp::RegisterEventHandler</code> and <code>IApp::RemoveEventHandler</code> provide mechanisms for event handler registering & deregistering, allowing various components of the application to subscribe to specific event types (e.g., keyboard, mouse) by providing a callback function. </p>
+	<p>The <code>MainApplication::ProcessEvents</code> method is responsible for processing the event queue. For each event, it retrieves the list of handlers registered for the event's type and dispatches the event to these handlers. This centralized event processing ensures that all subscribed components react appropriately to user inputs and system events, contributing to the application's interactivity and responsiveness.</p>
+
+	<h4>Camera Control Implementation</h4>
+	<p>Interactive controls for the <code>UserCamera</code> are implemented through keyboard inputs (W, A, S, D, Q, E for movement, and X for reset) and mouse inputs for rotation and zoom (drag and scroll, respectively). The <code>CameraManager</code> class handles the switch between active cameras using the TAB key, allowing for seamless transitions during scene navigation. I also implemented a debug camera to check culling in non-release builds which ccan be switched to by using F5 key</p>
+	<h4>Screen Recording</h4>
+	<p>Below is a screen recording demonstrating the camera's interactive movement within a scene:</p>
+	<p><video controls width="100%" style="max-width:600px">
+	  <source src="camera_movement.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	</video></p>
+
+	<h3>Frustum Culling <span class="atag">A1-cull</span></h3>
+	<p>Frustum culling optimizes scene rendering by excluding meshes outside the camera's view from the rendering pipeline, enhancing performance and resource utilization.</p>
+	<h4>Culling Approach</h4>
+	<p>The culling process leverages the camera's view and projection matrices to transform mesh bounding volumes (Axis-Aligned Bounding Boxes, AABB) into clip space. Each mesh's visibility is assessed by checking its transformed AABB corners against the frustum planes. Meshes with all corners outside any single frustum plane are culled, reducing the number of draw calls.</p>
+	<h4>Bounding Volume Computation</h4>
+	<p>Mesh AABBs are computed in <code>Mesh::LoadMeshData</code> by iterating through vertex positions and updating the minimum and maximum bounds. This approach ensures that the bounding volume accurately encapsulates the mesh geometry, essential for precise frustum culling.</p>
+	<h4>Implementation</h4>
+	<p>Frustum culling is implemented within <code>VulkanCore::recordCommandBuffer</code>, where visible mesh instances are determined before command buffer recording. The <code>ICamera::FrustumCulling</code> function checks if a mesh instance's AABB, transformed by its world matrix, intersects the frustum.</p>
+	<p>Below is a visual demonstration of frustum culling in action, showcasing the effectiveness of the culling mechanism by highlighting the exclusion of off-screen meshes:</p>
+	<p><video controls width="100%" style="max-width:600px">
+	  <source src="frustum_culling_demo.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	</video></p>
+
+	<h3>Animating the Scene <span class="atag">A1-move</span></h3>
+	<p>Scene animation is achieved through keyframe-based transformations, allowing for dynamic movement and transformation of scene objects over time.</p>
+	<h4>Keyframe Storage</h4>
+	<p>Keyframes are stored within <code>Driver</code> objects, part of the <code>SceneObj</code> hierarchy. Each <code>Driver</code> contains a series of timestamps (<code>times</code>) and corresponding transformation values (<code>values</code>), supporting translation, rotation, and scale. The <code>GetValue</code> method interpolates between keyframes based on the current time, providing smooth transitions.</p>
+	<h4>Animation Updates</h4>
+	<p>Animations are updated in the <code>Scene::Update</code> function, which iterates over active drivers and applies interpolated transformations to the respective scene nodes. This process is facilitated by the <code>Driver::GetValue</code> method, which computes the appropriate transformation for the current time, considering the specified interpolation type (e.g., linear, step, slerp).</p>
+	<h4>Elapsed Time Computation</h4>
+	<p>In non-headless mode, elapsed time is calculated using high-resolution clocks to measure the time difference between frames. This delta time is then used to advance animations, ensuring they progress at a consistent rate regardless of frame rate variations.</p>
+	<p>Below is a screen recording demonstrating an animated scene:</p>
+	<p><video controls width="100%" style="max-width:600px">
+	  <source src="animation_playback.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	</video></p>
+	
+
+	<h3>Handling Headless Mode <span class="atag">A1-hide</span></h3>
+	<p>In headless mode, my application performs rendering and updates without a graphical window, primarily for automated testing or server-side rendering tasks.</p>
+	<h4>Windowless Operation</h4>
+	<p>The <code>HeadlessWindow</code> class simulates a window environment in headless mode, parsing events from a specified file rather than interacting with real-time user input. This approach allows the application to run in environments without a graphical display, using predefined events to drive application logic and rendering.</p>
+	<h4>Event File Parsing and Timestamp Handling</h4>
+	<p>Events, including play, save, and custom markers, are parsed from a file and stored in a <code>std::vector</code> of <code>HeadlessEvent</code> objects, each with a timestamp and associated parameters. The application processes these events in chronological order, simulating user interactions or triggering specific actions at precise times, facilitating the synchronization of animation updates and other time-dependent operations.</p>
+	<h4>Headless Rendering</h4>
+	<p>In the absence of a display, <code>VulkanCore::createSwapChain</code> creates a "fake" swap chain with predefined dimensions, and <code>VulkanCore::drawFrameHeadless</code> manages the rendering loop. This setup ensures that rendering operations proceed as normal, with output directed to off-screen buffers instead of a visible window.</p>
+	<p>Below is a screen recording demonstrating the application's behavior in headless mode, showcasing animation playback and event-driven updates:</p>
+	<p><video controls width="100%" style="max-width:600px">
+	  <source src="headless_mode_demo.mp4" type="video/mp4">
+	  Your browser does not support the video tag.
+	</video></p>
+
+	<h3>Performance Improvements <span class="atag extra">A1x-fast</span></h3>
+	<p>In pursuit of enhanced rendering performance, my application transforms loaded meshes into indexed meshes for mesh rendering.</p>
+	<h4>Indexed Vertices Optimization</h4>
+	<p>To reduce the amount of data processed and sent to the GPU, and to minimize redundancy in vertex data, I converted the mesh data structure to use indexed vertices. This approach involves identifying unique vertices and using indices to refer to them during rendering, significantly reducing the size of the data set for complex meshes.</p>
+	<h4>Implementation Details</h4>
+	<p>In the <code>Mesh::LoadMeshData</code> function, a hash map (<code>std::unordered_map</code>) tracks unique vertices and assigns them an index. Each vertex is then replaced by its corresponding index in the mesh's index buffer. This process not only decreases the memory footprint of each mesh but also improves the cache efficiency of the GPU, leading to faster rendering times.</p>
+	<h4>Rendering with Indexed Vertices</h4>
+	<p>During the rendering phase, the application checks for the presence of an index buffer. If available, <code>vkCmdBindIndexBuffer</code> and <code>vkCmdDrawIndexed</code> are used to render the mesh using indexed drawing calls, further leveraging the benefits of indexed vertices for performance gains.</p>
+
+	<h2>Performance Tests</h2>
+	The following performance tests were conducted on the following system:
+	<ul>
+		<li>OS: Windows 11 22621</li>
+		<li>CPU: AMD Ryzen 9 5900HX</li>
+		<li>GPU: NVIDIA GeForce RTX 3080 Laptop 16GB</li>
+		<li>Memory: 32GB DDR4 3200MHz</li>
+		<li>Driver: NVIDIA 546.65</li>
+		<li>Compiling Args:<br>
+			<code>cl.exe /nologo /EHsc /Z7 /std:c++20 /W4 /WX /MD /O2 /wd4100 /wd4201 /wd4146</code><br>
+			<code>link.exe /nologo /SUBSYSTEM:CONSOLE /DEBUG:FASTLINK /INCREMENTAL:NO</code></li>
+	</ul>
+	<h3>Culling</h3>
+	I used the following command to test the performance of frustum culling:
+	<br>
+	None culling:
+	<br>
+	<code>build\release\Main.exe -scene "..\s72\examples\sphereflake_animated.s72" -physical-device "NVIDIA GeForce RTX 3080 Laptop GPU" -drawing-size 1920 1080 -culling none --measure --profiling -headless .\data\example.events"</code>
+	<br>
+	Frustum culling:
+	<br>
+	<code>build\release\Main.exe -scene "..\s72\examples\sphereflake_animated.s72" -physical-device "NVIDIA GeForce RTX 3080 Laptop GPU" -drawing-size 1920 1080 -culling frustum --measure --profiling -headless .\data\example.events"</code>
+
+	<p>Here is a screenshot of the test scene used in the performance evaluation:</p>
+	<p><img src="frustum_culling_perf.png" alt="Test Scene Screenshot" style="width:100%;max-width:600px"></p>
+
+	<p>Here is the chart showing the performance difference:</p>
+	<p><img src="frustum_culling_perf_chart.png" alt="Frustum Culling Performance Chart" style="width:100%;max-width:600px"></p>
+	<p> 
+		Average FPS with frustum culling: 683.105, std_dev: 9.640
+	<br>
+		Average FPS without frustum culling: 399.632, std_dev: 22.574
+	</p>
+
+	<p>
+		With frustum culling, we have a significant performance improvement. The average FPS is 71% higher than without frustum culling.
+	</p>
+
+	<h3>Bottlenecks</h3>
+
+	<h4>Scene Traversal & Vertex Processing Bottleneck</h4>
+	<p>To analyze the impact of scene complexity & vertex processing on performance, I varied the number of mesh instances in my <a href="sphereflake_animated.s72">sphereflake_animated.s72</a> scene. The chart below illustrates how increasing mesh complexity affects rendering performance:</p>
+	<p><img src="mesh_count_chart.png" alt="Mesh Count Performance Chart" style="width:100%;max-width:600px"></p>
+	<table>
+		<tr>
+			<th>Scene Complexity</th>
+			<th>Average FPS</th>
+			<th>Standard Deviation</th>
+		</tr>
+		<tr>
+			<td>Sphereflake - MeshInstances: 781</td>
+			<td>517.474</td>
+			<td>15.229</td>
+		</tr>
+		<tr>
+			<td>Sphereflake - MeshInstances: 117187</td>
+			<td>4.053</td>
+			<td>0.223</td>
+		</tr>
+	</table>
+	<p>The data shows a dramatic decrease in FPS as the number of mesh instances increases from 781 to 117,187, highlighting the scene traversal process as a significant bottleneck. Particularly, the transition from a moderately complex scene to an extremely complex one results in FPS dropping from 517.474 to just over 4, indicating the computational intensity of processing a large number of meshes.</p>
+
+	<h4>Fragment Processing/Write-back (GPU) Bottleneck</h4>
+	<p>The GPU's fragment processing and write-back phase is crucial for determining pixel colors and attributes. This stage can become a bottleneck, especially as rendering resolution increases, demanding more from the GPU's fragment shaders and memory bandwidth.</p>
+	<p>I changed the resolution of my <a href="sphereflake_animated.s72">sphereflake_animated.s72</a> scene from 1920x1080 all the way to 7680x8640. Here is the chart:</p>
+	<p><img src="resolution_perf_chart.png" alt="Resolution Performance Chart" style="width:100%;max-width:600px"></p>
+	<table>
+		<tr>
+			<th>Resolution</th>
+			<th>Average FPS</th>
+			<th>Standard Deviation</th>
+		</tr>
+		<tr>
+			<td>1920x1080</td>
+			<td>423.421</td>
+			<td>11.099</td>
+		</tr>
+		<tr>
+			<td>3840x2160</td>
+			<td>383.789</td>
+			<td>23.377</td>
+		</tr>
+		<tr>
+			<td>3840x4320</td>
+			<td>351.579</td>
+			<td>9.040</td>
+		</tr>
+		<tr>
+			<td>7680x4320</td>
+			<td>178.684</td>
+			<td>8.215</td>
+		</tr>
+		<tr>
+			<td>7680x8640</td>
+			<td>77.368</td>
+			<td>4.869</td>
+		</tr>
+	</table>
+
+	<p>The performance is degrading to scale after 3840x4320, where 2x pixels would bring FPS down to half. This is where pixel processing are the bottleneck.</p>
+
+<h3>Performance Improvements - Indexed vs. Non-Indexed Vertices</h3>
+
+<p>In the quest for performance optimization, various strategies were tested. One such strategy was the comparison between using non-indexed versus indexed vertices for rendering. Conventionally, indexed vertices are expected to enhance performance by reducing the amount of vertex data processed and avoiding redundancy. However, the results were contrary to expectations.</p>
+<p>The performance impact of using indexed vertices was analyzed by rendering a scene with both indexed and non-indexed vertex configurations. Surprisingly, the data revealed that rendering with non-indexed vertices resulted in higher FPS compared to indexed vertices.</p>
+<table>
+    <tr>
+        <th>Vertex Configuration</th>
+        <th>Average FPS</th>
+        <th>Standard Deviation</th>
+    </tr>
+    <tr>
+        <td>Non-indexed vertices</td>
+        <td>533.263</td>
+        <td>7.813</td>
+    </tr>
+    <tr>
+        <td>Indexed vertices</td>
+        <td>417.632</td>
+        <td>5.584</td>
+    </tr>
+</table>
+<p><img src="DrawIndexed.png" alt="Indexed vs Non-Indexed Performance Chart" style="width:100%;max-width:600px"></p>
+<p>This unexpected outcome, with non-indexed vertices outperforming indexed vertices, suggests that the overhead associated with indexing may outweigh its benefits in certain scenarios or that the specific implementation details and hardware characteristics could influence the performance dynamics. This anomaly warrants further investigation to understand the underlying causes and to identify conditions under which indexed vertices might offer performance gains.</p>
+
+<h2>Feedback</h2>
+<p class="placeholder">
+This is the end of the structured report. Feel free to add feedback about A1 (or A0!) to this section.
+</p>
+
+</body>
+</html>
