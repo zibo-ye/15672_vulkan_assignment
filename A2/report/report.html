@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>15-472-s24: A2 - Materials</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#b00;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#b08;
+}
+.atag.creative {
+	/* thanks, shout.horse! */
+	background:linear-gradient(0.4turn, #ffe680, #916f6f);
+}
+
+</style>
+</head>
+<body>
+<h1>A2: Materials
+<span class="subtitle">by Zibo Ye (ziboy)</span></span>
+</h1>
+
+For the A2 assignment on material, I used an uber shader to handle all material type. 
+I implemented the following features:
+<ul>
+  <li>Loading lighting environments</li>
+  <li>Tone mapping</li>
+  <li>Lambertian material</li>
+  <li>Normal maps</li>
+  <li>PBR material (partially)</li>
+</ul>
+
+<h2>My Model <span class="atag creative">A2-create</span></h2>
+
+Here is my model, a relief of a soldier, scanned from a real sculpture and processed in Blender:
+<p><img src="./soldier.jpg" alt="Soldier" style="width:20%;max-width:600px"></p>
+
+Here is a screen recording showing it under different materials running in real-time:
+<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+  <source src="../model/model.mp4">
+  Your browser does not support the video tag.
+</video>
+
+The material in this video includes (from left to right):
+<ul>
+  <li>Simple</li>
+  <li>Environment</li>
+  <li>Mirror</li>
+  <li>Lambertian</li>
+  <li>PBR (buggy)</li>
+</ul>
+
+<p>
+	The sculpture is located at <a href="https://www.google.com/maps/place/Morrow+Park,+Pittsburgh,+PA+15224/@40.4564182,-79.938732,19.33z/">Morrow Park</a> near my living place.
+</p>
+
+<p>
+	The scan is done using <a href="https://scaniverse.com/">Scaniverse</a> on my iPhone 15 Pro. The model is then processed in Blender following several tutorials on YouTube.
+</p>
+
+<ol>
+	<li><a href="https://www.youtube.com/watch?v=2-11OwgRqmE">Healing Non-Manifold Objects with Blender</a>: I used this tutorial to fix the non-manifold issues in the scanned model.</li>
+	<li><a href="https://www.youtube.com/watch?v=dKo0rWXVAlc">Easily Clean Your 3D Scans</a>: I used this tutorial to clean the model and generate low-poly version of the model with normal mapping.</li>
+</ol>
+
+Before processing, the model is a 3D scan with 39k vertices and 76k triangles. 
+After processing, the model is reduced to 29k vertices and 57k triangles. 
+<p><img src="./Before_processing.png" alt="Before_processing" style="width:50%;max-width:600px"><img src="./After_processing.png" alt="After_processing" style="width:50%;max-width:600px"></p>
+
+Also, I generated the albedo and normal map for the low-poly version of the model using Blender's baking feature.
+
+
+<p></p>
+<p><img src="../model/Soldier_albedo.png" alt="Albedo" style="width:50%;max-width:600px"><img src="../model/Soldier_normal.003.png" alt="Normal" style="width:50%;max-width:600px"></p>
+
+
+<h2>My Code</h2>
+
+<h3>Loading lighting environments <span class="atag">A2-env</span></h3> 
+
+
+<p>
+	For the new <code>"ENVIRONMENT"</code> type, I supported a new <code>Environment</code> class that inherits from <code>SceneObj</code> so that it can be parsed from the scene json.
+</p>
+
+<p>
+	Another important utility to support is the texture loading. I implemented a <code>Texture</code> class that supports loading images and upload the data to GPU.
+</p>
+
+<p>
+	Using the world coordinate system for the environment map allows each point in the world to use this map as a reference to determine the color of incoming light from any direction. I passed <code>ubo_cam.position</code> into the shader to calculate the direction from the camera to the point on the object to implement <code>mirror</code> material. For the <code>environment</code> material, I used the <code>fragData.normal</code> normal in world space as the direction to sample the environment map.
+</p>
+
+
+<p>
+	Environment map is a high dynamic range image. I chose <a href="https://polyhaven.com/a/meadow_2">Meadow_2</a> as my environment map. 
+	<img src="./envmap.png" alt="Environment Map" style="width:100%;max-width:600px">
+	
+	After pre-processing the HDR image into RGBE png image using provided tools, when sampling the environment map, I used a  <code>rgbe_to_float</code> in my shader to convert the sampled RGBE data to RGB color.
+</p>
+<p>
+	The screen recording above already includes the <code>environment</code> and <code>mirror</code> material:
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+	<source src="../model/model.mp4">
+	Your browser does not support the video tag.
+	</video>
+	As you can see, the <code>environment</code> material (the second from left) samples the environment map using models'normal while the <code>mirror</code> material is using the reflect direction from the camera to the model.
+</p>
+
+
+<h3>Tone mapping <span class="atag">A2-tone</span></h3>
+
+<p> 
+	My viewer's output color space and format is <code>VK_FORMAT_B8G8R8A8_SRGB</code> and <code>VK_COLOR_SPACE_SRGB_NONLINEAR_KHR</code>, so I don't need to take care of the gamma correction in my shader. Instead what I need to do is to compress linear HDR float data into linear sRGB data. For this purpose, I used the ACES tonemapping operator in my shader to process every <code>outColor</code> output from fragment shader. The <code>aces_tonemap</code> function is a great tonemapping algorithm provided by ACES to compress the high dynamic range data into low dynamic range data.
+</p>
+
+<p>
+	Here is the comparison of the image before and after tonemapping:
+<img src="./Before_tonemapping.png" alt="Albedo" style="width:50%;max-width:600px"><img src="./After_tonemapping.png" alt="Normal" style="width:50%;max-width:600px">
+	On the model with <code>lambertian</code> material, the difference between the image before and after tonemapping is massive. The image after tonemapping preserves more details while the image before tonemapping is too bright and loses a lot of details.
+</p>
+
+
+<p>
+	Here is the response curve of my ACES tonemapping operator:
+	<img src="./ACES_response_curve.png" alt="ACES response curve" style="width:100%;max-width:600px">
+</p>
+
+<h3>Lambertian material <span class="atag">A2-diffuse</span></h3>
+<p>
+	For the texture map that a material can have, I implemented a <code>Texture</code> class that supports loading images and upload the data to GPU. A <code>Material</code> class is also implemented to handle the material type and its all parameters. Every <code>Material</code> holds a descriptor set that contains all the textures for the material.
+</p>
+
+<p>
+	For the calculation of the lambertian environment map, I used <code>blur_cube.cpp</code> from <a href="https://github.com/ixchow/15-466-ibl/blob/master/cubes/blur_cube.cpp">the provided code</a>.
+</p>
+
+<p>
+	Here is the utility cube with lambertian material:
+</p>
+<p><img src="./cube_lambertian.png" alt="Env cube" style="width:100%;max-width:600px"></p>
+<p>
+	Here is an example of a lighting environment and it's precomputed lambertian lookup table. The left image is the original environment map and the right image is the lambertian environment map:
+</p>
+<p><img src="../model/meadow_2_512.png" alt="Env cube" style="width:20%;max-width:600px"><img src="../model/meadow_2_512_lambertian.png" alt="Env cube - lambertian" style="width:20%;max-width:600px"></p>
+
+<p>
+	As you can see, the lambertian environment map is very different from the original environment map, because it's a precomputed over the upper hemisphere (cos-weighted) to represent the incoming light from all directions.
+</p>
+
+<h3>Normal maps <span class="atag">A2-normal</span></h3>
+
+<p>
+I used the tangent space for the normal map. With the tangent and normal vectors, I can calculate the bitangent vector using the cross product of the tangent and normal vectors. <code>fragData.bitangent = inTangent.w * cross(fragData.normal, fragData.tangent)</code>
+</p>
+<p>
+	Then I can use the tangent, bitangent, and normal vectors to adjust the normal vector using the normal map.  <br>
+	<code>mat3 tbn = mat3(tangent, bitangent, normal);</code> <br>
+	<code>adjustedNormal = normalize(tbn * (normalMap * 2.0 - 1.0))</code>
+</p>
+
+<p>
+	Here is the comparison of the image before and after normal mapping:
+</p>
+<p><img src="./Before_normalmap.png" alt="Before normal map" style="width:100%;max-width:600px"></p>
+
+<p>
+	After normal mapping applied, the model looks only slightly worse. I don't know if it's my normal map's problem or the model's problem, but at least the normal map "works" on all material types except <code>simple</code>.
+</p>
+<p><img src="./After_normalmap.png" alt="After normal map" style="width:100%;max-width:600px"></p>
+
+<h3>PBR material <span class="atag">A2-pbr</span></h3>
+
+<p>
+	I haven't finished PBR material in this assignment. I tried to implement the PBR shader using the reference from <a href="https://github.com/SaschaWillems/Vulkan-glTF-PBR">Vulkan-glTF-PBR</a> and the paper <a href="https://blog.selfshadow.com/publications/s2013-shading-course/karis/s2013_pbs_epic_notes_v2.pdf">Real shading in Unreal Engine 4</a>. However, when I tried to generate the specular look-up mipmap in code using a new Vulkan pipeline, I encountered a lot of problems on infrastructure part and I didn't have enough time to fix them. I've already wrote the whole PBR shader, so after I fix the infrastructure part, I can easily integrate the PBR shader into my viewer.
+</p>
+
+<p>
+	For the texture-or-constant parameters in the material model, I added two more constructors for my <code>Texture</code> class to support reading a float value or a vec3 value and convert them to a 1x1 texture. <br>
+	<code>Texture(const vkm::vec3& vec3Value, VkFormat imageFormat);</code> <br>
+	<code>Texture(const float& floatValue, VkFormat imageFormat);</code>
+</p>
+
+<p>
+	I also wrote <code>brdflut</code> in C++ based on <a href="https://github.com/SaschaWillems/Vulkan-glTF-PBR/blob/master/data/shaders/genbrdflut.frag">genbrdflut.frag</a> to generate the BRDF LUT. Here is the image generated:
+	<p><img src="./brdflut.png" alt="brdflut" style="width:50%;max-width:600px"></p>
+</p>
+
+
+<h3>Displacement map <span class="atag extra">A2x-displacement</span></h3>
+
+I didn't implement displacement map in this assignment.
+
+<h2>Performance Tests</h2>
+
+The following performance tests were conducted on the following system:
+<ul>
+  <li>OS: Windows 11 22621</li>
+  <li>CPU: AMD Ryzen 9 5900HX</li>
+  <li>GPU: NVIDIA GeForce RTX 3080 Laptop 16GB</li>
+  <li>Memory: 32GB DDR4 3200MHz</li>
+  <li>Driver: NVIDIA 546.65</li>
+  <li>Compiling Args:<br>
+    <code>cl.exe /nologo /EHsc /Z7 /std:c++20 /W4 /WX /MD /O2 /wd4100 /wd4201 /wd4146</code><br>
+    <code>link.exe /nologo /SUBSYSTEM:CONSOLE /DEBUG:FASTLINK /INCREMENTAL:NO</code></li>
+</ul>
+
+<h3>Material Performance</h3>
+
+<p>For this part, I used the following command to measure performance of all five material types that I implemented. </p>
+
+<code>"D:\dev\Vulkan\15672_vulkan\build\windows\x64\release\Main.exe" -scene "D:\dev\Vulkan\s72_mine\soldier3.s72" -drawing-size 1920 1080 -culling none --measure --profiling -headless ".\scripts\example.events"</code>
+
+<p>
+	Here is the performance data for all five material types:
+</p>
+<p>
+	<img src="./perf_normal_map.png" alt="Material Performance" style="width:50%;max-width:600px"><img src="./perf_no_normal_map.png" alt="Material Performance" style="width:50%;max-width:600px">
+</p>
+
+After summarizing the data in the following table:
+
+<table>
+    <tr>
+        <th>Technique</th>
+        <th>Average FPS</th>
+        <th>Std. Dev.</th>
+        <th>% Difference from Simple</th>
+    </tr>
+    <tr>
+        <td>Simple (no normal map)</td>
+        <td>7521.588</td>
+        <td>406.048</td>
+        <td></td>
+    </tr>
+	<tr>
+        <td>Environment (no normal map)</td>
+        <td>7208.765</td>
+        <td>452.759</td>
+        <td>-4.16%</td>
+    </tr>
+	<tr>
+        <td>Mirror (no normal map)</td>
+        <td>6844.647</td>
+        <td>394.022</td>
+        <td>-9.00%</td>
+    </tr>
+    <tr>
+        <td>Lambertian (no normal map)</td>
+        <td>6570.176</td>
+        <td>548.253</td>
+        <td>-12.65%</td>
+    </tr>
+    <tr>
+        <td>PBR (no normal map)</td>
+        <td>6129.647</td>
+        <td>414.568</td>
+        <td>-18.51%</td>
+    </tr>
+
+    <tr>
+        <th>Technique</th>
+        <th>Average FPS</th>
+        <th>Std. Dev.</th>
+        <th>% Difference from No Normal Map</th>
+    </tr>
+	<tr>
+        <td>Simple</td>
+        <td>6479.471</td>
+        <td>351.330</td>
+        <td>-13.86%</td>
+    </tr>
+    <tr>
+        <td>Environment</td>
+        <td>6573.000</td>
+        <td>511.794</td>
+        <td>-8.82%</td>
+    </tr>
+    <tr>
+        <td>Mirror</td>
+        <td>6179.647</td>
+        <td>471.536</td>
+        <td>-9.72%</td>
+    </tr>
+    <tr>
+        <td>Lambertian</td>
+        <td>5881.765</td>
+        <td>351.231</td>
+        <td>-10.48%</td>
+    </tr>
+    <tr>
+        <td>PBR</td>
+        <td>5688.882</td>
+        <td>641.469</td>
+        <td>-7.19%</td>
+    </tr>
+</table>
+
+<p>
+	From the data, we can see that the performance is decreasing as the material type becomes more complex. The performance difference between the material types is not very significant, but the performance difference between the material types with and without normal map is significant. The performance difference between the material types with and without normal map is about 10%.
+</p>
+
+<h3>Texture vs Vertex Detail</h3>
+
+
+
+<p>
+For comparison, I generated another high-poly model with 129k vertices and 256k triangles, marking ~3.4x difference to the original 39k vertices and 76k triangles model. I used the same albedo for the high-poly model. Here is the comparison of the relative performance of the high-resolution mesh with a lambertian material to a low resolution mesh with a normal map and a lambertian material: 
+</p>
+<p>
+	<img src="./perf_model.png" alt="Material Performance" style="width:100%;max-width:600px">
+</p>
+
+<table>
+    <tr>
+        <th>Configuration</th>
+        <th>Average FPS</th>
+        <th>Std. Dev.</th>
+        <th>% Difference</th>
+    </tr>
+    <tr>
+        <td>Low-res with Normal Map</td>
+        <td>5875.071</td>
+        <td>356.418</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>High-res without Normal Map</td>
+        <td>3793.214</td>
+        <td>204.32</td>
+        <td>-35.44%</td>
+    </tr>
+</table>
+
+<p>
+	This table clearly shows the significant performance drop when moving from a low-resolution with a normal map to a high-resolution without a normal map. 
+</p>
+
+<p>
+	As for the problem of When is texture detail really cheaper than vertex detail, I think the answer is that it depends on the situation. 
+	High vertex counts put a significant load on the vertex processor and rasterization part of the GPU, while high texture detail puts a significant load on the texture sampling and filtering part of the GPU. Whichever is cheaper depends on the specific hardware and the specific situation. 
+</p>
+<p>
+	Also, texture has better support on LOD, which means it can be more efficient when the object is far away from the camera, while vertex detail is always the same no matter how far the object is from the camera.
+</p>
+
+
+
+<h2>Feedback</h2>
+I wish I could start earlier.
+</p>
+
+</body>
+</html>

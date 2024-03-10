@@ -1,0 +1,154 @@
+["s72-v1",
+{
+	"type":"MATERIAL",
+	"name":"pbr:soldier",
+	"pbr":{
+		"albedo":{ "src":"Soldier_albedo.png" },
+		"roughness":1.0,
+		"metalness":0.0
+	}
+},
+{
+	"type":"MESH",
+	"name":"mesh.002",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier2.mesh.002.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier2.mesh.002.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier2.mesh.002.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier2.mesh.002.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier2.mesh.002.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":1
+},
+{
+	"type":"NODE",
+	"name":"Soldier_PBR",
+	"translation":[-3,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":2
+},
+{
+	"type":"MATERIAL",
+	"name":"lambertian:soldier",
+	"normalMap":{ "src":"Soldier_normal.003.png" },
+	"lambertian":{
+		"albedo":{ "src":"Soldier_albedo.png" }
+	}
+},
+{
+	"type":"MESH",
+	"name":"mesh.001",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier2.mesh.001.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier2.mesh.001.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier2.mesh.001.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier2.mesh.001.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier2.mesh.001.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":4
+},
+{
+	"type":"NODE",
+	"name":"Soldier_Lambertian",
+	"translation":[-1.5,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":5
+},
+{
+	"type":"MATERIAL",
+	"name":"environment:soldier",
+	"environment":{}
+},
+{
+	"type":"MESH",
+	"name":"mesh.003",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier2.mesh.003.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier2.mesh.003.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier2.mesh.003.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier2.mesh.003.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier2.mesh.003.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":7
+},
+{
+	"type":"NODE",
+	"name":"Soldier_Environment",
+	"translation":[1.5,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":8
+},
+{
+	"type":"MATERIAL",
+	"name":"mirror:soldier",
+	"mirror":{}
+},
+{
+	"type":"MESH",
+	"name":"mesh.004",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier2.mesh.004.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier2.mesh.004.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier2.mesh.004.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier2.mesh.004.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier2.mesh.004.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":10
+},
+{
+	"type":"NODE",
+	"name":"Soldier_Mirror",
+	"translation":[0,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":11
+},
+{
+	"type":"MESH",
+	"name":"mesh.005",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier2.mesh.005.pnc.b72", "offset":0, "stride":28, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier2.mesh.005.pnc.b72", "offset":12, "stride":28, "format":"R32G32B32_SFLOAT" },
+		"COLOR":{ "src":"soldier2.mesh.005.pnc.b72", "offset":24, "stride":28, "format":"R8G8B8A8_UNORM" }
+	}
+},
+{
+	"type":"NODE",
+	"name":"Soldier_Simple",
+	"translation":[3,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":13
+},
+{
+	"type":"ENVIRONMENT",
+	"name":"!environment:meadow_2_512.png",
+	"radiance":{"src":"meadow_2_512.png", "type":"cube", "format":"rgbe"}
+},
+{
+	"type":"NODE",
+	"name":"!environment:meadow_2_512.png",
+	"translation":[0.0582974,0.000141983,0],
+	"rotation":[-0,-0,-0.999997,0.00243573],
+	"scale":[1,1,1],
+	"environment":15
+},
+{
+	"type":"SCENE",
+	"name":"D:\\dev\\Vulkan\\s72_mine\\soldier2.blend",
+	"roots":[3, 6, 9, 12, 14, 16]
+}
+]
