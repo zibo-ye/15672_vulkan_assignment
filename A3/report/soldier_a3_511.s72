@@ -1,0 +1,10316 @@
+["s72-v1",
+{
+	"type":"MATERIAL",
+	"name":"pbr:soldier",
+	"pbr":{
+		"albedo":{ "src":"Soldier_albedo.png" },
+		"roughness":1,
+		"metalness":0
+	}
+},
+{
+	"type":"MESH",
+	"name":"mesh.002",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier_a3_511.mesh.002.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier_a3_511.mesh.002.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier_a3_511.mesh.002.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier_a3_511.mesh.002.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier_a3_511.mesh.002.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":1
+},
+{
+	"type":"NODE",
+	"name":"Soldier_PBR",
+	"translation":[-1.5,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":2
+},
+{
+	"type":"MATERIAL",
+	"name":"lambertian:soldier.001",
+	"lambertian":{
+		"albedo":{ "src":"Soldier_albedo.png" }
+	}
+},
+{
+	"type":"MESH",
+	"name":"mesh.001",
+	"topology":"TRIANGLE_LIST",
+	"count":173541,
+	"attributes":{
+		"POSITION":{ "src":"soldier_a3_511.mesh.001.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier_a3_511.mesh.001.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier_a3_511.mesh.001.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier_a3_511.mesh.001.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier_a3_511.mesh.001.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":4
+},
+{
+	"type":"NODE",
+	"name":"Soldier_Lambertian",
+	"translation":[1.5,0,0],
+	"rotation":[-0,-0,-1,4.37114e-08],
+	"scale":[1,1,1],
+	"mesh":5
+},
+{
+	"type":"MATERIAL",
+	"name":"lambertian:ground",
+	"lambertian":{
+		"albedo":[ 0.8, 0.8, 0.8 ]
+	}
+},
+{
+	"type":"MESH",
+	"name":"Cube",
+	"topology":"TRIANGLE_LIST",
+	"count":36,
+	"attributes":{
+		"POSITION":{ "src":"soldier_a3_511.Cube.pnTtc.b72", "offset":0, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"NORMAL":{ "src":"soldier_a3_511.Cube.pnTtc.b72", "offset":12, "stride":52, "format":"R32G32B32_SFLOAT" },
+		"TANGENT":{ "src":"soldier_a3_511.Cube.pnTtc.b72", "offset":24, "stride":52, "format":"R32G32B32A32_SFLOAT" },
+		"TEXCOORD":{ "src":"soldier_a3_511.Cube.pnTtc.b72", "offset":40, "stride":52, "format":"R32G32_SFLOAT" },
+		"COLOR":{ "src":"soldier_a3_511.Cube.pnTtc.b72", "offset":48, "stride":52, "format":"R8G8B8A8_UNORM" }
+	},
+	"material":7
+},
+{
+	"type":"NODE",
+	"name":"Ground",
+	"translation":[0,0,-0.0430781],
+	"rotation":[0,0,0,1],
+	"scale":[5,5,0.05],
+	"mesh":8
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.001",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.001",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":10
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.002",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.002",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":12
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.003",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.003",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":14
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.004",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.004",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":16
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.005",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.005",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":18
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.006",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.006",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":20
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.007",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.007",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":22
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.008",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.008",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":24
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.009",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.009",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":26
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.010",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.010",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":28
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.011",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.011",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":30
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.012",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.012",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":32
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.013",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.013",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":34
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.014",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.014",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":36
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.015",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.015",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":38
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.016",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.016",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":40
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.017",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.017",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":42
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.018",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.018",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":44
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.019",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.019",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":46
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.020",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.020",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":48
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.021",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.021",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":50
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.022",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.022",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":52
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.023",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.023",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":54
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.024",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.024",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":56
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.025",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.025",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":58
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.026",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.026",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":60
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.027",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.027",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":62
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.028",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.028",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":64
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.029",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.029",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":66
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.030",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.030",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":68
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.031",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.031",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":70
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.032",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.032",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":72
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.033",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.033",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":74
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.034",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.034",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":76
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.035",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.035",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":78
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.036",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.036",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":80
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.037",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.037",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":82
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.038",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.038",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":84
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.039",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.039",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":86
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.040",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.040",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":88
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.041",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.041",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":90
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.042",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.042",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":92
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.043",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.043",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":94
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.044",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.044",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":96
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.045",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.045",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":98
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.046",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.046",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":100
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.047",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.047",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":102
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.048",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.048",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":104
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.049",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.049",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":106
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.050",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.050",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":108
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.051",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.051",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":110
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.052",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.052",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":112
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.053",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.053",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":114
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.054",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.054",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":116
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.055",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.055",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":118
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.056",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.056",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":120
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.057",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.057",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":122
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.058",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.058",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":124
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.059",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.059",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":126
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.060",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.060",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":128
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.061",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.061",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":130
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.062",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.062",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":132
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.063",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.063",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":134
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.064",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.064",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":136
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.065",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.065",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":138
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.066",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.066",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":140
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.067",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.067",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":142
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.068",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.068",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":144
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.069",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.069",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":146
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.070",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.070",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":148
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.071",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.071",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":150
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.072",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.072",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":152
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.073",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.073",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":154
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.074",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.074",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":156
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.075",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.075",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":158
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.076",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.076",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":160
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.077",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.077",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":162
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.078",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.078",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":164
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.079",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.079",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":166
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.080",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.080",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":168
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.081",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.081",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":170
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.082",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.082",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":172
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.083",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.083",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":174
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.084",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.084",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":176
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.085",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.085",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":178
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.086",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.086",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":180
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.087",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.087",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":182
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.088",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.088",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":184
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.089",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.089",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":186
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.090",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.090",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":188
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.091",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.091",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":190
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.092",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.092",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":192
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.093",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.093",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":194
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.094",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.094",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":196
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.095",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.095",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":198
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.096",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.096",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":200
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.097",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.097",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":202
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.098",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.098",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":204
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.099",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.099",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":206
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.100",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.100",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":208
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.101",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.101",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":210
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.102",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.102",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":212
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.103",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.103",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":214
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.104",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.104",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":216
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.105",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.105",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":218
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.106",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.106",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":220
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.107",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.107",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":222
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.108",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.108",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":224
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.109",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.109",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":226
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.110",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.110",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":228
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.111",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.111",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":230
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.112",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.112",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":232
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.113",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.113",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":234
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.114",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.114",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":236
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.115",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.115",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":238
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.116",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.116",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":240
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.117",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.117",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":242
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.118",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.118",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":244
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.119",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.119",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":246
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.120",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.120",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":248
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.121",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.121",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":250
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.122",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.122",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":252
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.123",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.123",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":254
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.124",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.124",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":256
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.125",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.125",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":258
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.126",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.126",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":260
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.127",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.127",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":262
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.128",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.128",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":264
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.129",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.129",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":266
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.130",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.130",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":268
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.131",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.131",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":270
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.132",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.132",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":272
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.133",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.133",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":274
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.134",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.134",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":276
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.135",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.135",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":278
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.136",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.136",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":280
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.137",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.137",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":282
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.138",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.138",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":284
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.139",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.139",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":286
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.140",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.140",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":288
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.141",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.141",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":290
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.142",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.142",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":292
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.143",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.143",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":294
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.144",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.144",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":296
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.145",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.145",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":298
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.146",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.146",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":300
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.147",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.147",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":302
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.148",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.148",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":304
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.149",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.149",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":306
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.150",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.150",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":308
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.151",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.151",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":310
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.152",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.152",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":312
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.153",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.153",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":314
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.154",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.154",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":316
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.155",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.155",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":318
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.156",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.156",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":320
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.157",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.157",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":322
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.158",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.158",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":324
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.159",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.159",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":326
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.160",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.160",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":328
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.161",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.161",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":330
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.162",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.162",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":332
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.163",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.163",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":334
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.164",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.164",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":336
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.165",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.165",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":338
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.166",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.166",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":340
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.167",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.167",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":342
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.168",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.168",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":344
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.169",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.169",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":346
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.170",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.170",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":348
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.171",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.171",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":350
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.172",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.172",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":352
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.173",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.173",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":354
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.174",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.174",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":356
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.175",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.175",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":358
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.176",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.176",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":360
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.177",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.177",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":362
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.178",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.178",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":364
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.179",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.179",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":366
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.180",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.180",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":368
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.181",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.181",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":370
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.182",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.182",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":372
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.183",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.183",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":374
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.184",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.184",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":376
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.185",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.185",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":378
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.186",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.186",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":380
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.187",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.187",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":382
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.188",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.188",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":384
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.189",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.189",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":386
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.190",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.190",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":388
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.191",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.191",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":390
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.192",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.192",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":392
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.193",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.193",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":394
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.194",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.194",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":396
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.195",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.195",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":398
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.196",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.196",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":400
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.197",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.197",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":402
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.198",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.198",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":404
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.199",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.199",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":406
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.200",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.200",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":408
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.201",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.201",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":410
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.202",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.202",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":412
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.203",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.203",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":414
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.204",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.204",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":416
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.205",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.205",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":418
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.206",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.206",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":420
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.207",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.207",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":422
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.208",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.208",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":424
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.209",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.209",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":426
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.210",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.210",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":428
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.211",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.211",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":430
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.212",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.212",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":432
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.213",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.213",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":434
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.214",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.214",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":436
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.215",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.215",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":438
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.216",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.216",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":440
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.217",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.217",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":442
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.218",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.218",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":444
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.219",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.219",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":446
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.220",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.220",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":448
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.221",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.221",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":450
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.222",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.222",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":452
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.223",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.223",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":454
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.224",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.224",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":456
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.225",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.225",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":458
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.226",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.226",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":460
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.227",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.227",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":462
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.228",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.228",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":464
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.229",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.229",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":466
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.230",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.230",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":468
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.231",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.231",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":470
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.232",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.232",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":472
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.233",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.233",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":474
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.234",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.234",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":476
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.235",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.235",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":478
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.236",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.236",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":480
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.237",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.237",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":482
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.238",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.238",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":484
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.239",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.239",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":486
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.240",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.240",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":488
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.241",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.241",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":490
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.242",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.242",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":492
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.243",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.243",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":494
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.244",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.244",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":496
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.245",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.245",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":498
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.246",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.246",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":500
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.247",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.247",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":502
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.248",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.248",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":504
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.249",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.249",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":506
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.250",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.250",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":508
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.251",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.251",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":510
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.252",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.252",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":512
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.253",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.253",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":514
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.254",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.254",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":516
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.255",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.255",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":518
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.256",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.256",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":520
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.257",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.257",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":522
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.258",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.258",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":524
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.259",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.259",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":526
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.260",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.260",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":528
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.261",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.261",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":530
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.262",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.262",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":532
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.263",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.263",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":534
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.264",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.264",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":536
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.265",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.265",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":538
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.266",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.266",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":540
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.267",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.267",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":542
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.268",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.268",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":544
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.269",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.269",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":546
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.270",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.270",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":548
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.271",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.271",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":550
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.272",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.272",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":552
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.273",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.273",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":554
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.274",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.274",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":556
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.275",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.275",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":558
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.276",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.276",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":560
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.277",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.277",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":562
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.278",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.278",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":564
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.279",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.279",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":566
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.280",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.280",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":568
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.281",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.281",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":570
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.282",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.282",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":572
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.283",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.283",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":574
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.284",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.284",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":576
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.285",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.285",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":578
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.286",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.286",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":580
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.287",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.287",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":582
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.288",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.288",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":584
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.289",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.289",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":586
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.290",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.290",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":588
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.291",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.291",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":590
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.292",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.292",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":592
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.293",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.293",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":594
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.294",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.294",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":596
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.295",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.295",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":598
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.296",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.296",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":600
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.297",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.297",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":602
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.298",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.298",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":604
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.299",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.299",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":606
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.300",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.300",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":608
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.301",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.301",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":610
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.302",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.302",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":612
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.303",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.303",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":614
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.304",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.304",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":616
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.305",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.305",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":618
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.306",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.306",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":620
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.307",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.307",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":622
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.308",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.308",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":624
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.309",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.309",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":626
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.310",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.310",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":628
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.311",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.311",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":630
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.312",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.312",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":632
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.313",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.313",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":634
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.314",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.314",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":636
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.315",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.315",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":638
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.316",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.316",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":640
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.317",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.317",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":642
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.318",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.318",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":644
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.319",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.319",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":646
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.320",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.320",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":648
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.321",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.321",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":650
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.322",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.322",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":652
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.323",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.323",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":654
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.324",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.324",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":656
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.325",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.325",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":658
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.326",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.326",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":660
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.327",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.327",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":662
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.328",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.328",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":664
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.329",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.329",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":666
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.330",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.330",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":668
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.331",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.331",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":670
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.332",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.332",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":672
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.333",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.333",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":674
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.334",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.334",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":676
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.335",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.335",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":678
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.336",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.336",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":680
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.337",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.337",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":682
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.338",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.338",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":684
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.339",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.339",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":686
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.340",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.340",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":688
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.341",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.341",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":690
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.342",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.342",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":692
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.343",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.343",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":694
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.344",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.344",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":696
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.345",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.345",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":698
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.346",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.346",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":700
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.347",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.347",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":702
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.348",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.348",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":704
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.349",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.349",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":706
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.350",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.350",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":708
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.351",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.351",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":710
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.352",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.352",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":712
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.353",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.353",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":714
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.354",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.354",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":716
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.355",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.355",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":718
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.356",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.356",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":720
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.357",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.357",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":722
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.358",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.358",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":724
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.359",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.359",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":726
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.360",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.360",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":728
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.361",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.361",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":730
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.362",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.362",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":732
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.363",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.363",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":734
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.364",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.364",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":736
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.365",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.365",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":738
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.366",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.366",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":740
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.367",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.367",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":742
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.368",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.368",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":744
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.369",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.369",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":746
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.370",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.370",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":748
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.371",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.371",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":750
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.372",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.372",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":752
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.373",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.373",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":754
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.374",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.374",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":756
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.375",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.375",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":758
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.376",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.376",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":760
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.377",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.377",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":762
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.378",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.378",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":764
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.379",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.379",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":766
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.380",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.380",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":768
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.381",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.381",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":770
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.382",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.382",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":772
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.383",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.383",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":774
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.384",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.384",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":776
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.385",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.385",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":778
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.386",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.386",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":780
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.387",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.387",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":782
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.388",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.388",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":784
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.389",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.389",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":786
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.390",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.390",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":788
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.391",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.391",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":790
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.392",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.392",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":792
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.393",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.393",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":794
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.394",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.394",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":796
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.395",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.395",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":798
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.396",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.396",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":800
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.397",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.397",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":802
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.398",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.398",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":804
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.399",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.399",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":806
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.400",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.400",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":808
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.401",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.401",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":810
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.402",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.402",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":812
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.403",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.403",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":814
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.404",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.404",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":816
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.405",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.405",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":818
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.406",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.406",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":820
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.407",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.407",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":822
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.408",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.408",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":824
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.409",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.409",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":826
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.410",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.410",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":828
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.411",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.411",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":830
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.412",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.412",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":832
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.413",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.413",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":834
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.414",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.414",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":836
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.415",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.415",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":838
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.416",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.416",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":840
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.417",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.417",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":842
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.418",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.418",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":844
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.419",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.419",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":846
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.420",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.420",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":848
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.421",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.421",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":850
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.422",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.422",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":852
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.423",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.423",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":854
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.424",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.424",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":856
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.425",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.425",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":858
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.426",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.426",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":860
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.427",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.427",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":862
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.428",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.428",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":864
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.429",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.429",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":866
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.430",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.430",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":868
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.431",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.431",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":870
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.432",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.432",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":872
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.433",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.433",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":874
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.434",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.434",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":876
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.435",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.435",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":878
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.436",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.436",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":880
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.437",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.437",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":882
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.438",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.438",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":884
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.439",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.439",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":886
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.440",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.440",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":888
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.441",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.441",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":890
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.442",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.442",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":892
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.443",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.443",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":894
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.444",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.444",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":896
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.445",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.445",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":898
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.446",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.446",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":900
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.447",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.447",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":902
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.448",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.448",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":904
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.449",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.449",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":906
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.450",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.450",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":908
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.451",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.451",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":910
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.452",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.452",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":912
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.453",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.453",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":914
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.454",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.454",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":916
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.455",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.455",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":918
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.456",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.456",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":920
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.457",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.457",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":922
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.458",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.458",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":924
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.459",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.459",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":926
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.460",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.460",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":928
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.461",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.461",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":930
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.462",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.462",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":932
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.463",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.463",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":934
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.464",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.464",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":936
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.465",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.465",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":938
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.466",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.466",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":940
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.467",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.467",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":942
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.468",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.468",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":944
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.469",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.469",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":946
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.470",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.470",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":948
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.471",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.471",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":950
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.472",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.472",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":952
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.473",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.473",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":954
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.474",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.474",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":956
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.475",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.475",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":958
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.476",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.476",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":960
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.477",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.477",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":962
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.478",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.478",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":964
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.479",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.479",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":966
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.480",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.480",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":968
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.481",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.481",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":970
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.482",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.482",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":972
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.483",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.483",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":974
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.484",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.484",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":976
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.485",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.485",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":978
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.486",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.486",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":980
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.487",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.487",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":982
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.488",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.488",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":984
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.489",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.489",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":986
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.490",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.490",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":988
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.491",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.491",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":990
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.492",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.492",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":992
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.493",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.493",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":994
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.494",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.494",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":996
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.495",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.495",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":998
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.496",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.496",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1000
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.497",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.497",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1002
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.498",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.498",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1004
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.499",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.499",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1006
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.500",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.500",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1008
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.501",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.501",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1010
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.502",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.502",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1012
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.503",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.503",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1014
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.504",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.504",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1016
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.505",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.505",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1018
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.506",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.506",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1020
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.507",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.507",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1022
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.508",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.508",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1024
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.509",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.509",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1026
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.510",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.510",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1028
+},
+{
+
+	"type":"LIGHT",
+	"name":"Sphere.511",
+	"tint":[1, 0.94246, 0.704257],
+	"sphere":{
+		"radius":0.4,
+		"power":25,
+		"limit":10
+	},
+	"shadow":256
+},
+{
+	"type":"NODE",
+	"name":"Sphere_Light.511",
+	"translation":[0,2,3],
+	"rotation":[0,0,0,1],
+	"scale":[1,1,1],
+	"light":1030
+},
+{
+	"type":"SCENE",
+	"name":"D:\\dev\\Vulkan\\s72_mine\\soldier_a3_511.blend",
+	"roots":[3, 6, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 123, 125, 127, 129, 131, 133, 135, 137, 139, 141, 143, 145, 147, 149, 151, 153, 155, 157, 159, 161, 163, 165, 167, 169, 171, 173, 175, 177, 179, 181, 183, 185, 187, 189, 191, 193, 195, 197, 199, 201, 203, 205, 207, 209, 211, 213, 215, 217, 219, 221, 223, 225, 227, 229, 231, 233, 235, 237, 239, 241, 243, 245, 247, 249, 251, 253, 255, 257, 259, 261, 263, 265, 267, 269, 271, 273, 275, 277, 279, 281, 283, 285, 287, 289, 291, 293, 295, 297, 299, 301, 303, 305, 307, 309, 311, 313, 315, 317, 319, 321, 323, 325, 327, 329, 331, 333, 335, 337, 339, 341, 343, 345, 347, 349, 351, 353, 355, 357, 359, 361, 363, 365, 367, 369, 371, 373, 375, 377, 379, 381, 383, 385, 387, 389, 391, 393, 395, 397, 399, 401, 403, 405, 407, 409, 411, 413, 415, 417, 419, 421, 423, 425, 427, 429, 431, 433, 435, 437, 439, 441, 443, 445, 447, 449, 451, 453, 455, 457, 459, 461, 463, 465, 467, 469, 471, 473, 475, 477, 479, 481, 483, 485, 487, 489, 491, 493, 495, 497, 499, 501, 503, 505, 507, 509, 511, 513, 515, 517, 519, 521, 523, 525, 527, 529, 531, 533, 535, 537, 539, 541, 543, 545, 547, 549, 551, 553, 555, 557, 559, 561, 563, 565, 567, 569, 571, 573, 575, 577, 579, 581, 583, 585, 587, 589, 591, 593, 595, 597, 599, 601, 603, 605, 607, 609, 611, 613, 615, 617, 619, 621, 623, 625, 627, 629, 631, 633, 635, 637, 639, 641, 643, 645, 647, 649, 651, 653, 655, 657, 659, 661, 663, 665, 667, 669, 671, 673, 675, 677, 679, 681, 683, 685, 687, 689, 691, 693, 695, 697, 699, 701, 703, 705, 707, 709, 711, 713, 715, 717, 719, 721, 723, 725, 727, 729, 731, 733, 735, 737, 739, 741, 743, 745, 747, 749, 751, 753, 755, 757, 759, 761, 763, 765, 767, 769, 771, 773, 775, 777, 779, 781, 783, 785, 787, 789, 791, 793, 795, 797, 799, 801, 803, 805, 807, 809, 811, 813, 815, 817, 819, 821, 823, 825, 827, 829, 831, 833, 835, 837, 839, 841, 843, 845, 847, 849, 851, 853, 855, 857, 859, 861, 863, 865, 867, 869, 871, 873, 875, 877, 879, 881, 883, 885, 887, 889, 891, 893, 895, 897, 899, 901, 903, 905, 907, 909, 911, 913, 915, 917, 919, 921, 923, 925, 927, 929, 931, 933, 935, 937, 939, 941, 943, 945, 947, 949, 951, 953, 955, 957, 959, 961, 963, 965, 967, 969, 971, 973, 975, 977, 979, 981, 983, 985, 987, 989, 991, 993, 995, 997, 999, 1001, 1003, 1005, 1007, 1009, 1011, 1013, 1015, 1017, 1019, 1021, 1023, 1025, 1027, 1029, 1031]
+}
+]
