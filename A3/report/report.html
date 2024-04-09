@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>15-472-s24: A3 - Lights</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#b00;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#b08;
+}
+.atag.creative {
+	/* thanks, shout.horse! */
+	background:linear-gradient(0.4turn, #ffe680, #916f6f);
+}
+
+</style>
+</head>
+<body>
+<h1>A3: Lights
+<span class="subtitle">by Zibo Ye(ziboy)</span></span>
+</h1>
+
+For the A3 assignment on lights, I used a uniform buffer to store light data and implemented shading for Lambertian and PBR materials for different light types, including point, spot, and sun lights.
+
+Due to the time constraint from my side, I did not implement <span class="atag">A3-shadows</span> and <span class="atag">A3-extra</span> features.
+
+<h2>My Lit Scene <span class="atag creative">A3-create</span></h2>
+
+Here is my scene, lit with a dynamic point light (rotating around models), a spot light, and a sun light, using a PBR material and a Lambertian material on the soldier model I scanned in A2:
+<p><img src="./blender_scene.png" alt="blender_scene" style="width:100%;max-width:600px"></p>
+
+Here is a screen recording showing it under different materials running in real-time:
+<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+  <source src="../scene/scene.mp4">
+  Your browser does not support the video tag.
+</video>
+
+The three lights in this scene are as follows:
+<ol>
+	<li><strong>Sphere Light</strong>: A dynamic point light placed at (0, 2, 3) that rotates around the soldier models.</li>
+	<p><img src="./sphere_light.png" alt="sphere_light" style="width:100%;max-width:600px"></p>
+	<li><strong>Spot Light</strong>: A spot light placed at (0, 4.66814, 6.20279) that points at the soldier models.</li>
+	<p><img src="./spot_light.png" alt="spot_light" style="width:100%;max-width:600px"></p>
+	<li><strong>Sun Light</strong>: A sun light placed at the top of the scene.
+</ol>
+
+The soldier model is a 3D scan of a sculpture in <a href="https://www.google.com/maps/place/Morrow+Park,+Pittsburgh,+PA+15224/@40.4564182,-79.938732,19.33z/">Morrow Park</a>, Pittsburgh, PA.
+<p><img src="./soldier.jpg" alt="Soldier" style="width:20%;max-width:600px"></p>
+<p>
+	The scan is done using <a href="https://scaniverse.com/">Scaniverse</a> on my iPhone 15 Pro. The model is then processed in Blender following several tutorials on YouTube.
+</p>
+
+<ol>
+	<li><a href="https://www.youtube.com/watch?v=2-11OwgRqmE">Healing Non-Manifold Objects with Blender</a>: I used this tutorial to fix the non-manifold issues in the scanned model.</li>
+	<li><a href="https://www.youtube.com/watch?v=dKo0rWXVAlc">Easily Clean Your 3D Scans</a>: I used this tutorial to clean the model and generate low-poly version of the model with normal mapping.</li>
+</ol>
+
+Also, I generated the albedo and normal map for the low-poly version of the model using Blender's baking feature.
+
+<p><img src="../scene/Soldier_albedo.png" alt="Albedo" style="width:50%;max-width:600px"><img src="../scene/Soldier_normal.003.png" alt="Normal" style="width:50%;max-width:600px"></p>
+
+
+<h2>My Code</h2>
+
+<h3>Loading light objects <span class="atag">A3-load</span></h3> 
+
+<p>
+	For the new <code>"LIGHT"</code> type, I supported a new <code>Light</code> class that inherits from <code>SceneObj</code> so that it can be parsed from the scene json.
+</p>
+<p>
+	To support multiple lights and light referred by different nodes, I used a similar way with the <code>Mesh</code> class to traverse the scene graph every frame to extract all <code>LightInstance</code>s.
+</p>
+<p> 
+	A <code>LightInstance</code> would contain a shared pointer to a <code>Light</code> object and a transformation matrix to transform the light to the world space.
+</p>
+<p>
+	I left the power and tint attributes of each light as non-premultiplied, as the computation in shader is more straightforward and the performance impact is negligible.
+</p>
+
+<h3>Adding Direct Lighting to Materials <span class="atag">A3-materials</span></h3>
+
+<p>
+	To pass light data to the shader, I used a uniform buffer to store all light data and bind it to the shader.
+</p>
+<p><img src="./shader_light.png" alt="shader_light" style="width:100%;max-width:600px"></p>
+
+<p>
+	For every model, I iterate through all <code>LightInstance</code>s and calculate the direct lighting contribution from each light.
+</p>
+
+
+<p>
+	Here is a screenshot showing the scene with Lambertian materials under sphere, spot, and sun lights:
+</p>
+
+<p><img src="./lights_mix.png" alt="lights_mix" style="width:100%;max-width:600px"></p>
+
+Here is a screen recording showing the scene running in real-time under different materials and lights:
+<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+  <source src="../scene/scene.mp4">
+  Your browser does not support the video tag.
+</video>
+<p>
+	In the video, the soldier model on the left is using a Lambertian material, and the one on the right is using a PBR material. The scene is lit with a dynamic point light (rotating around models), a spot light, and a sun light.
+</p>
+<p>
+	As we can see, two models have different shading behaviors under different lights. The Lambertian material is more diffuse and less reflective, while the PBR material is more reflective. I haven't checked the correctness of my PBR implementation, but it looks okay to me.
+</p>
+
+<p>
+	For performance analysis, I set up my scene using [1, 2, 4, 8, 16, 32, 64, 128, 256, 511] sphere lights and measured the frame rate. Here is the graph showing the performance impact of adding additional lights to the scene:
+</p>
+<p><img src="./perf.png" alt="perf" style="width:100%;max-width:600px"></p>
+
+After summarizing the data in the following table:
+
+<table>
+    <tr>
+        <th>Light Source Count</th>
+        <th>Average Frame Time (us)</th>
+        <th>Avg Frame Time / Light Count (us/light)</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>385.996</td>
+        <td>385.996</td>
+    </tr>
+	<tr>
+        <td>2</td>
+        <td>403.923</td>
+        <td>201.962</td>
+    </tr>
+	<tr>
+        <td>4</td>
+        <td>446.864</td>
+        <td>111.716</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>550.047</td>
+        <td>68.756</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>839.341</td>
+        <td>52.459</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>1393.075</td>
+        <td>43.534</td>
+    </tr>
+    <tr>
+        <td>64</td>
+        <td>2564.878</td>
+        <td>40.076</td>
+    </tr>
+    <tr>
+        <td>128</td>
+        <td>5797.862</td>
+        <td>45.295</td>
+    </tr>
+    <tr>
+        <td>256</td>
+        <td>12944.406</td>
+        <td>50.564</td>
+    </tr>
+    <tr>
+        <td>511</td>
+        <td>26972.488</td>
+        <td>52.784</td>
+    </tr>
+</table>
+
+<p>
+	And here is a line graph showing the relationship between the light source count and the average frame time. Both axes are on a logarithmic scale to better display the data across the wide range of values.
+</p>
+
+<p><img src="./perf_2.png" alt="perf_2" style="width:100%;max-width:600px"></p>
+
+<p>
+	As you can see in the graph, as the number of lights increases, the average frame time increases almost linearly. The average frame time per light source is around 50us after light count reaches 16, where we can consider the bottleneck to be light computation.
+</p>
+
+<p>
+	Considering a real-time application, we would expect the frame rate to be around 60fps, which means the frame time should be around 16.67ms. In my estimation, my viewer can handle around 300 light sources at a reasonable frame rate (60fps).
+</p>
+
+<h3>Adding Shadows for Spot Lights <span class="atag">A3-shadows</span></h3>
+I didn't implement shadows for spot lights in this assignment due to the time constraint.
+
+<h2>Feedback</h2>
+
+<p>
+	I feel like the description of the assignment is a bit vague. I understand that this is a more advanced class, and the unknown is part of the learning process and it resembles the real-world scenario of real-time graphics. However, I think it would be helpful to have more detailed walk through to guide us through the assignment.
+</p>
+
+Also, I regret not having enough time to implement the shadow feature. Job hunting and interviews have taken up a lot of my time, and I have to prioritize them over the assignment. I hope I can make up for it in my final project.
+
+</body>
+</html>
