@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>15-472-s24: Final - Grass Rendering - A Comparison between Tessellation Shader and Mesh Shader Pipeline</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#b00;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#b08;
+}
+.atag.creative {
+	/* thanks, shout.horse! */
+	background:linear-gradient(0.4turn, #ffe680, #916f6f);
+}
+
+</style>
+</head>
+<body>
+<h1>Final Project - Grass Simulation & Rendering - A Comparison between Tessellation Shader and Mesh Shader Pipeline
+<span class="subtitle">by Zibo Ye(ziboy)</span></span>
+</h1>
+
+
+<!-- TODO: Add a brief introduction to the project, and a brief summary of the results. -->
+
+<p>
+	<!-- For the final project of 15-472 Real-time Graphics, I implemented a grass simulation & rendering algorithm introduced in  using both the tessellation shader pipeline and the mesh shader pipeline. 
+	
+	I compared the performance and visual quality of the two methods. -->
+</p>
+
+<h2>Demo</h2>
+
+
+Here is a demo video showing the grass rendering in real-time under different total counts and different pipeline methods:
+<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+  <source src="../extra/vulkan_grass_rendering_extra.mp4">
+  Your browser does not support the video tag.
+</video>
+
+<h2>Introduction to the paper "Responsive real-time grass rendering for general 3D scenes"</h2>
+
+The paper "<a href="https://dl.acm.org/doi/10.1145/3023368.3023380">Responsive real-time grass rendering for general 3D scenes</a>" introduces a grass simulation and rendering solution that can compute and render a large number of grass blades in real-time. The pipeline is designed as follows:
+
+<h3>Grass blade model</h3>
+
+<p>
+	The paper first introduces a grass blade model that uses Bezier curves with three control points to represent the shape of the grass blade. 
+</p>
+<p><img src="./paper_1.png" alt="shader_light" style="width:30%;max-width:600px"></p>
+
+<ul>
+	<li><strong>v0</strong>: the position of the root, precomputed offline to form a reasonable meadow.</li>
+	<li><strong>v2</strong>: the position of the tip, updated every frame by compute shader to represent the physical movement of the grass blade.</li>
+	<li><strong>v1</strong>: another control point, controlled by the position of v0 and v2, to form a smooth curve.</li>
+</ul>
+
+<p> 
+	For the physical simulation, here are some parameters that can be adjusted to control the behavior of the grass blade:
+</p>
+
+<ul>
+	<li><strong>Up vector</strong></li>
+	<li><strong>Width</strong></li>
+	<li><strong>Height</strong></li>
+	<li><strong>Direction (orientation)</strong></li>
+	<li><strong>Stiffness coefficient</strong></li>
+</ul>
+
+<p>
+	These parameters are packed into 4 <code>vec4</code>s and are used as the input and output of the grass simulation compute shader and the input of the grass rendering vertex shader.
+</p>
+
+<h3>Grass Simulation</h3>
+
+<p>
+	Every frame, the position of the tip of the grass blade <strong>v2</strong> is updated by a compute shader based on the force contributions from three natural sources:
+	<ul>
+		<li><strong>Gravity (g)</strong></li>
+		<li><strong>Recovery (r)</strong></li>
+		<li><strong>Wind (w)</strong></li>
+	</ul>
+	The paper also counts the contribution from collisions with other objects in the scene. For simplicity, I will ignore this part in my implementation.
+</p>
+
+<p>
+Here is an image to show the contribution of each force to the grass blade:
+</p>
+
+<p><img src="./paper_2.png" alt="shader_light" style="width:30%;max-width:600px"></p>
+
+<p>
+	After computing the new position of the tip, the compute shader will also validate and correct it to make sure the grass is not under the ground.
+</p>
+
+<h3>Culling</h3>
+
+<p>
+	To achieve higher compute and rendering performance, the paper introduces a culling process to determine which grass blades are visible to the camera and should be rendered. It includes four steps:
+
+	<ul>
+		<li><strong>Orientation test</strong>: to cull the blades that are not important for the final rendering, based on occlusions and the orientation of the blade to the camera.</li>
+		<li><strong>View-frustum test</strong>: to cull the blades that are not in the camera's view frustum.</li>
+		<li><strong>Distance test</strong>: to cull the blades that are too far away from the camera.</li>
+		<li><strong>Occlusion test</strong>: to cull the blades that are occluded by other objects in the scene.</li>
+	</ul>
+</p>
+
+<p>
+	After the culling process, the remaining grass blades are accumulated and sent to the rendering pass to be rendered.
+</p>
+
+<h3>Grass Rendering</h3>
+
+<p>
+	For grass rendering, the paper used the following pipeline:
+</p>
+
+<ul>
+	<li><strong>Indirect rendering</strong>: to start a draw call using the data stored in a buffer on the GPU. In this way, CPU doesn't need to know the exact number of culled grass blades, and all the data can stay on the GPU without synchronizing with the CPU. This can cut down the CPU-GPU communication overhead.</li>
+	<li><strong>Vertex Shader</strong>: each grass blade input is 4 <strong>vec4</strong>s computed in the grass simulation pass.</li>
+	<li><strong>Tessellation Control Shader</strong>: to control the tessellation level of each grass blade.</li>
+	<li><strong>Tessellation Evaluation Shader</strong>: to evaluate the bezier curve and generate more detailed grass blades geometry based on the data from the compute shader.</li>
+	<li><strong>Pixel Shader</strong>: to render the grass blades with a simple shading method.</li>
+</ul>
+
+<p>
+	Here is an example result of the paper:
+</p>
+<p><img src="./paper_3.png" alt="shader_light" style="width:100%;max-width:600px"></p>
+
+<p>
+	Overall, the paper introduces a complete pipeline to simulate and render grass in real-time. The pipeline is designed to be efficient and scalable to handle a large number of grass blades and it looks good. However, it is implemented in tessellation shader, before the mesh shader pipeline is introduced in the later version of the graphics API. 
+</p>
+<p>
+	Recently, AMD published a <a href="https://gpuopen.com/learn/mesh_shaders/mesh_shaders-procedural_grass_rendering/">blog post</a> about using mesh shaders to implement grass rendering on DX12 and HLSL, but they didn't provide a detailed performance comparison between the two methods. As a graphics enthusiast, I am interested in comparing the performance and visual quality of the two methods and see if mesh shader can provide a better solution for grass rendering, and if so, where is the bottleneck and why. 
+</p>
+<p>
+	Therefore, in this project, I will implement the grass rendering pipeline using both tessellation shader and mesh shader and compare their performance and visual quality. but before that, let's have a brief introduction to the tessellation shader pipeline and the mesh shader pipeline.
+</p>
+
+<h2>Introduction to Tessellation Shader Pipeline</h2>
+<p>
+	The tessellation shader pipeline is a feature introduced in OpenGL 4.0 and DirectX 11 back in 2009. It allows the GPU to generate additional geometry based on the input vertices, which can be used to increase the level of detail of the rendered object. The pipeline consists of three stages:
+</p>
+<ul>
+	<li><strong>Tessellation Control Shader (Hull Shader)</strong>: to control the tessellation level of each patch.</li>
+	<li><strong>Tessellation Primitive Generator (Tessellator)</strong>: to generate the tessellated patch based on the tessellation level.</li>
+	<li><strong>Tessellation Evaluation Shader (Hull Shader)</strong>: to evaluate the tessellated patch and generate more detailed geometry.</li>
+</ul>
+
+<p>
+	Here is a diagram showing the tessellation shader pipeline:
+</p>
+<p><img src="./intro_tess.png" alt="shader_light" style="width:50%;max-width:600px"></p>
+
+<p>
+	The tessellation shader pipeline is widely used in game development to increase the level of detail of the terrain, water, and other complex geometry. It can also be used to implement procedural geometry generation, such as grass rendering, as introduced in the paper. However, the tessellation shader pipeline has some limitations:
+
+	<ul>
+		<li><strong>Performance</strong>: the tessellation shader pipeline can be performance-intensive, especially when generating a large amount of geometry. The tessellation level needs to be carefully controlled to balance the visual quality and performance.</li>
+		<li><strong>Complexity</strong>: the tessellation shader pipeline requires additional shaders and stages, which can increase the complexity of the rendering pipeline.</li>
+		<li><strong>Compatibility</strong>: the tessellation shader pipeline is not supported on all hardware and platforms, which can limit its use in some cases.</li>
+	</ul>
+</p>
+
+
+<p>
+	You can find more about the tessellation shader pipeline in the <a href="https://www.khronos.org/opengl/wiki/Tessellation">OpenGL wiki</a> and the <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-tessellation">Microsoft documentation</a>. Here are some tutorials and examples to help you get started with tessellation shaders: <a href="https://web.engr.oregonstate.edu/~mjb/cs519/Handouts/tessellation.1pp.pdf">1</a>, <a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Tessellation">2</a>, <a href="https://ogldev.org/www/tutorial30/tutorial30.html">3</a>.
+</p>
+
+
+<h2>Introduction to Mesh Shader Pipeline</h2>
+
+
+
+<h2>My Code</h2>
+
+this demo is using infra code from [University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 5 - Vulkan Grass Rendering](https://github.com/CIS565-Fall-2023/Project5-Vulkan-Grass-Rendering). Kudos for their instructors and TAs to produce this infrastructure code for easier implementation!
+
+<h2>Performance Comparison</h2>
+
+
+<h2>Summary & Future Work</h2>
+
+
+<h2>Reference</h2>
+
+<ul>
+    <li>
+        Original Paper: <a href="https://dl.acm.org/doi/10.1145/3023368.3023380">Responsive real-time grass rendering for general 3D scenes | Proceedings of the 21st ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games</a>
+    </li>
+    <li>
+        Original code (Written in C++ and OpenGL): <a href="https://github.com/klejah/ResponsiveGrassDemo">klejah/ResponsiveGrassDemo: Demo of grass rendering technique: Responsive Real-Time Grass Rendering for General 3D Scenes</a>
+    </li>
+    <li>
+        Vulkan Infrastructure code from UPenn CIS5650 - GPU Programming and Architecture: <a href="https://github.com/CIS565-Fall-2023/Project5-Vulkan-Grass-Rendering">University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 5 - Vulkan Grass Rendering</a> and <a href="https://onedrive.live.com/view.aspx?resid=A6B78147D66DD722%2196872&authkey=!ALJknhlOAyWBM_U">corresponding project instruction slides</a>
+    </li>
+    <li>
+        Mesh shader implementation on DX12 and HLSL: <a href="https://gpuopen.com/learn/mesh_shaders/mesh_shaders-procedural_grass_rendering/">Procedural grass rendering - Mesh shaders on AMD RDNA™ graphics cards - AMD GPUOpen</a>
+    </li>
+    <li>
+        Basic Mesh shader: <a href="https://github.com/SaschaWillems/Vulkan/blob/eedfcc6b74fe9c50025eaceaa8ed70f44b14824a/examples/meshshader/meshshader.cpp#L47">Vulkan/examples/meshshader/meshshader.cpp</a>
+    </li>
+</ul>
+
+<h2>Feedback</h2>
+
+
+
+<!-- 
+
+<h3>Loading light objects <span class="atag">A3-load</span></h3> 
+
+<p>
+	For the new <code>"LIGHT"</code> type, I supported a new <code>Light</code> class that inherits from <code>SceneObj</code> so that it can be parsed from the scene json.
+</p>
+<p>
+	To support multiple lights and light referred by different nodes, I used a similar way with the <code>Mesh</code> class to traverse the scene graph every frame to extract all <code>LightInstance</code>s.
+</p>
+<p> 
+	A <code>LightInstance</code> would contain a shared pointer to a <code>Light</code> object and a transformation matrix to transform the light to the world space.
+</p>
+<p>
+	I left the power and tint attributes of each light as non-premultiplied, as the computation in shader is more straightforward and the performance impact is negligible.
+</p>
+
+<h3>Adding Direct Lighting to Materials <span class="atag">A3-materials</span></h3>
+
+<p>
+	To pass light data to the shader, I used a uniform buffer to store all light data and bind it to the shader.
+</p>
+<p><img src="./shader_light.png" alt="shader_light" style="width:100%;max-width:600px"></p>
+
+<p>
+	For every model, I iterate through all <code>LightInstance</code>s and calculate the direct lighting contribution from each light.
+</p>
+
+
+<p>
+	Here is a screenshot showing the scene with Lambertian materials under sphere, spot, and sun lights:
+</p>
+
+<p><img src="./lights_mix.png" alt="lights_mix" style="width:100%;max-width:600px"></p>
+
+Here is a screen recording showing the scene running in real-time under different materials and lights:
+<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+  <source src="../scene/scene.mp4">
+  Your browser does not support the video tag.
+</video>
+<p>
+	In the video, the soldier model on the left is using a Lambertian material, and the one on the right is using a PBR material. The scene is lit with a dynamic point light (rotating around models), a spot light, and a sun light.
+</p>
+<p>
+	As we can see, two models have different shading behaviors under different lights. The Lambertian material is more diffuse and less reflective, while the PBR material is more reflective. I haven't checked the correctness of my PBR implementation, but it looks okay to me.
+</p>
+
+<p>
+	For performance analysis, I set up my scene using [1, 2, 4, 8, 16, 32, 64, 128, 256, 511] sphere lights and measured the frame rate. Here is the graph showing the performance impact of adding additional lights to the scene:
+</p>
+<p><img src="./perf.png" alt="perf" style="width:100%;max-width:600px"></p>
+
+After summarizing the data in the following table:
+
+<table>
+    <tr>
+        <th>Light Source Count</th>
+        <th>Average Frame Time (us)</th>
+        <th>Avg Frame Time / Light Count (us/light)</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>385.996</td>
+        <td>385.996</td>
+    </tr>
+	<tr>
+        <td>2</td>
+        <td>403.923</td>
+        <td>201.962</td>
+    </tr>
+	<tr>
+        <td>4</td>
+        <td>446.864</td>
+        <td>111.716</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>550.047</td>
+        <td>68.756</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>839.341</td>
+        <td>52.459</td>
+    </tr>
+    <tr>
+        <td>32</td>
+        <td>1393.075</td>
+        <td>43.534</td>
+    </tr>
+    <tr>
+        <td>64</td>
+        <td>2564.878</td>
+        <td>40.076</td>
+    </tr>
+    <tr>
+        <td>128</td>
+        <td>5797.862</td>
+        <td>45.295</td>
+    </tr>
+    <tr>
+        <td>256</td>
+        <td>12944.406</td>
+        <td>50.564</td>
+    </tr>
+    <tr>
+        <td>511</td>
+        <td>26972.488</td>
+        <td>52.784</td>
+    </tr>
+</table>
+
+<p>
+	And here is a line graph showing the relationship between the light source count and the average frame time. Both axes are on a logarithmic scale to better display the data across the wide range of values.
+</p>
+
+<p><img src="./perf_2.png" alt="perf_2" style="width:100%;max-width:600px"></p>
+
+<p>
+	As you can see in the graph, as the number of lights increases, the average frame time increases almost linearly. The average frame time per light source is around 50us after light count reaches 16, where we can consider the bottleneck to be light computation.
+</p>
+
+<p>
+	Considering a real-time application, we would expect the frame rate to be around 60fps, which means the frame time should be around 16.67ms. In my estimation, my viewer can handle around 300 light sources at a reasonable frame rate (60fps).
+</p>
+
+<h3>Adding Shadows for Spot Lights <span class="atag">A3-shadows</span></h3>
+I didn't implement shadows for spot lights in this assignment due to the time constraint.
+
+<h2>Feedback</h2> -->
+
+</body>
+</html>
