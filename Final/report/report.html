@@ -215,12 +215,6 @@ Here is an image to show the contribution of each force to the grass blade:
 <p>
 	Overall, the paper introduces a complete pipeline to simulate and render grass in real-time. The pipeline is designed to be efficient and scalable to handle a large number of grass blades and it looks good. However, it is implemented in tessellation shader, before the mesh shader pipeline is introduced in the later version of the graphics API. 
 </p>
-<p>
-	Recently, AMD published a <a href="https://gpuopen.com/learn/mesh_shaders/mesh_shaders-procedural_grass_rendering/">blog post</a> about using mesh shaders to implement grass rendering on DX12 and HLSL, but they didn't provide a detailed performance comparison between the two methods. As a graphics enthusiast, I am interested in comparing the performance and visual quality of the two methods and see if mesh shader can provide a better solution for grass rendering, and if so, where is the bottleneck and why. 
-</p>
-<p>
-	Therefore, in this project, I will implement the grass rendering pipeline using both tessellation shader and mesh shader and compare their performance and visual quality. but before that, let's have a brief introduction to the tessellation shader pipeline and the mesh shader pipeline.
-</p>
 
 <h2>Introduction to Tessellation Shader Pipeline</h2>
 <p>
@@ -241,12 +235,12 @@ Here is an image to show the contribution of each force to the grass blade:
 	The tessellation shader pipeline is widely used in game development to increase the level of detail of the terrain, water, and other complex geometry. It can also be used to implement procedural geometry generation, such as grass rendering, as introduced in the paper. However, the tessellation shader pipeline has some limitations:
 
 	<ul>
-		<li><strong>Performance</strong>: the tessellation shader pipeline can be performance-intensive, especially when generating a large amount of geometry. The tessellation level needs to be carefully controlled to balance the visual quality and performance.</li>
+		<li><strong>Performance</strong>: the tessellation shader pipeline can be performance-intensive, especially when generating a large amount of geometry. </li>
 		<li><strong>Complexity</strong>: the tessellation shader pipeline requires additional shaders and stages, which can increase the complexity of the rendering pipeline.</li>
 		<li><strong>Compatibility</strong>: the tessellation shader pipeline is not supported on all hardware and platforms, which can limit its use in some cases.</li>
+		<li><strong>Flexibility</strong>: the tessellation shader pipeline is designed for generating additional geometry based on the input vertices, which may not be suitable for all types of geometry generation.</li>
 	</ul>
 </p>
-
 
 <p>
 	You can find more about the tessellation shader pipeline in the <a href="https://www.khronos.org/opengl/wiki/Tessellation">OpenGL wiki</a> and the <a href="https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-tessellation">Microsoft documentation</a>. Here are some tutorials and examples to help you get started with tessellation shaders: <a href="https://web.engr.oregonstate.edu/~mjb/cs519/Handouts/tessellation.1pp.pdf">1</a>, <a href="https://learnopengl.com/Guest-Articles/2021/Tessellation/Tessellation">2</a>, <a href="https://ogldev.org/www/tutorial30/tutorial30.html">3</a>.
@@ -255,17 +249,336 @@ Here is an image to show the contribution of each force to the grass blade:
 
 <h2>Introduction to Mesh Shader Pipeline</h2>
 
+<p>
+	The mesh shader pipeline is a new feature introduced in Vulkan 1.2 and DirectX 12 Ultimate. It's first introduced by NVIDIA in 2018 with their Turing GPU release, and it became a KHR (cross-vendor) extension in Vulkan in 2022. It allows the GPU to generate and process geometry in a more flexible and efficient way compared to the traditional fixed-function pipeline.
+</p>
+<p><img src="./Classic Graphics Pipeline.png" alt="Classic Graphics Pipeline" style="width:100%;max-width:600px"></p>
+<p>
+	Looking at the classic graphics pipeline, we can see that basically the pipeline can be divided in two parts by rasterizer. The steps before rasterizer is what we are focusing today, known as geometry processing. It includes:
+
+	<ul>
+		<li><strong>Input Assembly</strong>: fixed function</li>
+		<li><strong>Vertex shader</strong></li>
+		<li><strong>Tessellation control shader</strong>: optional</li>
+		<li><strong>Tessellator (Tessellation primitive generator)</strong>: fixed function, optional</li>
+		<li><strong>Tessellation evaluation shader</strong>: optional</li>
+		<li><strong>Geometry shader</strong>: optional</li>
+	</ul>
+
+	This fixed sequence have several problems:
+	<ul>
+		<li>Vertex inputs are annoying to setup for programmers and might be a bottleneck in some applications, because of the fixed function unit implementation on some GPUs</li>
+		<li>No control over how geometry is arranged: vertex shaders work at the per-vertex level, so programmer don't generally have control of how geometry is arranged in primitives. We can't control how GPU schedule vertex batch. </li>
+		<li>Waste of compute resources and memory bandwidth: You may run several vertex shader invocations that end up forming a primitive that faces back and is not visible and there's no easy way to filter those out, wasting computing power and memory bandwidth reading data for those vertices.</li>
+		<li> Geometry amplification and modification can be simpler, faster and more flexible, beyond tessellation shaders and geometry shaders, where the latter is infamous for its inefficiency.</li>
+	</ul>
+	This is where mesh shaders come in. They are a new type of shader that can be used to replace some of the fixed-function geometry processing stages with a more flexible and efficient compute model. It's more aligned to the modern GPU architecture, where the unified compute units (CUDA Cores, Compute Units, ...) are the main processing units.
+</p>
+
+<p><img src="./Mesh Shader Pipeline.png" alt="Mesh Shader Pipeline" style="width:100%;max-width:600px"></p>
+
+<p>
+	The mesh shader pipeline consists of the following stages:
+	<ul>
+		<li><strong>Task Shader</strong> (optional): to generate tasks (work items) for the mesh shader.</li>
+		<li><strong>Mesh Shader</strong>: to process the tasks and generate the geometry.</li>
+	</ul>
+
+	What mesh shader basically do is to use a compute shader like model to generate geometry. It can be used to replace the vertex, tessellation, and geometry shaders in the traditional pipeline, providing more flexibility and efficiency in geometry processing. It can also be used to implement procedural geometry generation, such as grass rendering.
+</p>
+
+<p>
+	You can find more about the mesh shader pipeline in the <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#mesh-shaders">Vulkan specification</a>, the <a href="https://microsoft.github.io/DirectX-Specs/d3d/MeshShader.html">DirectX-Specs</a> and the <a href="https://developer.nvidia.com/blog/introduction-turing-mesh-shaders/">NVIDIA Technical Blog about mesh shader</a> when it is first introduced.
+</p>
+
+<h2>Motivation</h2>
+
+<p>
+	During winter break, I self studied <a href="https://cis565-fall-2023.github.io/"> UPenn's CIS5650 - GPU Programming and Architecture</a> and one of their assignments is to use Vulkan to implement a grass simulation and rendering pipeline based on the paper "<a href="https://dl.acm.org/doi/10.1145/3023368.3023380">Responsive real-time grass rendering for general 3D scenes</a>". The result is quite impressive, and I learned a lot about the tessellation shader pipeline and grass rendering.
+</p>
+
+<p>
+	Recently, AMD published a <a href="https://gpuopen.com/learn/mesh_shaders/mesh_shaders-procedural_grass_rendering/">blog post</a> about using mesh shaders to implement the same algorithm on DX12 and HLSL, but they didn't provide a detailed performance comparison between the two methods. As a graphics enthusiast, I am interested in comparing the performance of the two methods and see if mesh shader is a better solution for grass rendering, and if so, where is the bottleneck of the both methods and why. 
+</p>
+<p>
+	Therefore, in this project, I will implement the grass rendering pipeline using both tessellation shader and mesh shader and compare their performance and visual quality. 
+</p>
+
+<h2>Implementation & Code</h2>
+
+<p>
+	For the implementation, I used the Vulkan infrastructure code from <a href="https://github.com/CIS565-Fall-2023/Project5-Vulkan-Grass-Rendering"> 
+	University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 5 - Vulkan Grass Rendering</a>. The code is written in C++ and Vulkan, and it provides a basic framework for their assignment. I modified the code to implement the grass simulation and rendering algorithm using tessellation shader pipeline as what the paper did, and then I added the mesh shader pipeline to match the same visual quality of the tessellation shader pipeline. With the same visual quality, I can compare the performance of the two methods.
+</p>
+
+<h3> Tessellation Shader Pipeline</h3>
+
+The tessellation shader pipeline is implemented as what the paper did. Every frame, the position of the tip of the grass blade <strong>v2</strong> is updated by a compute shader  <code>compute.comp</code> based on the force contributions from three natural sources:
+
+<ul>
+	<li><strong>Gravity (g)</strong></li>
+	<li><strong>Recovery (r)</strong></li>
+	<li><strong>Wind (w)</strong>: I used a perlin noise to simulate the wind force.</li>
+</ul>
+
+After validation, the updated grass blades are culled based on the orientation, camera's view frustum and distance, and the remaining grass blades are sent to the tessellation shader pipeline.
+
+<ul>
+	<li><strong>Vertex Shader</strong><code>grass.vert</code>: simply multiply the position with a model matrix to transform it to the world space and pass every blade's data (4 <strong>vec4</strong>) to the next stage.</li>
+	<li><strong>Tessellation Control Shader</strong><code>grass.tesc</code>: to control the tessellation level of each grass blade. Here I used tessellationLevel = 5, which makes every blades to be tessellated into 6x3=18 vertices and 5x4=20 triangles.
+	<p><img src="./grass_blade_shape.png" alt="tessellation" style="width:100%;max-width:600px"></p>
+	</li>
+	<li><strong>Tessellation Evaluation Shader</strong><code>grass.tese</code>: after the fixed Tessellator stage, the 6x3 quad will be generated and here is where we can evaluate the bezier curve and generate more detailed grass blades geometry based on the data from the compute shader. I used a simple parabola function to generate the grass blade shape. 
+		<code>
+			float tParabola(float u, float v) {
+				return (u * 2 - 1) * (1 - v * v);
+			}
+		</code>
+		<p>
+			The vertex's normal and uv is also calculated here and passed to the rasterizer, where they will be interpolated and passed to the pixel shader.
+		</p>
+
+	</li>
+	<li><strong>Pixel Shader</strong><code>grass.frag</code>: to render the grass blades with a simple shading method, basically just lerp a light green color and darker green color based on the uv. Also the color gets darker to the root.</li>
+</ul>
+
+<p>
+	Here is the result of the tessellation shader pipeline:
+	<!-- Tess_1K.mp4 -->
+
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+	  <source src="./Tess_1K.mp4">
+	  Your browser does not support the video tag.
+	</video>
+
+	As you can see, the meadow is filled with grass blades that are moving and swaying in the wind. This demo is rendered with 1K grass blades with a really high framerate. After increating the grass blade count to 1M, the framerate drops to around 20fps.
+
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+		<source src="./Tess_1M.mp4">
+		Your browser does not support the video tag.
+	  </video>
+</p>
+
+<h3> Mesh Shader Pipeline</h3>
+
+The mesh shader pipeline is implemented to match the same visual quality of the tessellation shader pipeline. The mesh shader pipeline consists of the following stages. First of all, I setup the mesh shader pipeline in the <code>Renderer.cpp</code> file. To enable mesh shader, I followed the <a href="https://github.com/SaschaWillems/Vulkan/blob/eedfcc6b74fe9c50025eaceaa8ed70f44b14824a/examples/meshshader/meshshader.cpp#L47">basic mesh shader setup</a> by Sascha Willems and enabled several extensions for the Vulkan Instance and PhysicalDevice. Then a basic mesh shader pipeline is created in <code>CreateGrassMeshShaderPipeline</code>. At the beginning, it would only render three triangles:
+
+<p><img src="./basic_mesh_shader.png" alt="Basic Mesh Shader" style="width:100%;max-width:600px"></p>
+<p>
+	Then I added the grass blade shape generation in the mesh shader <code>meshshader.mesh</code>. For each thread in mesh shader, I generated the vertices and primitives of 1 grass blade, which is 18 vertices and 20 triangles. The mesh shader is basically a sum of the geometry processing part of the tessellation shader pipeline. It first calculates the actual vertex count and primitive count and uses <code>SetMeshOutputsEXT</code> to set the output vertices and primitives. Then it reads the input data from the compute shader using the index <code>bladeIdx = gl_GlobalInvocationID.x</code> and the data <code>Blade thisBlade = culledBlades.blades[bladeIdx]</code>. The mesh shader then generates the vertices and indices based on the data and the parabola function. The vertex's normal and uv is also calculated here and passed to the rasterizer, where they will be interpolated and passed to the pixel shader. In this example we don't need to pass per-primitive data to pixel shader, but it's possible to do so by using <code>gl_MeshPrimitivesEXT</code>.
+</p>
+<p>
+	Here is the result of the mesh shader pipeline:
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+		<source src="./Mesh_1K.mp4">
+		Your browser does not support the video tag.
+	</video>
+
+	As you can see, the behavior of the grass blades is the same as the tessellation shader pipeline. To verify the visual quality, I used Renderdoc and compared the two methods side by side. It turns out for the same grass blade data, they will generate the exact same geometry with the same visual quality.
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+		<source src="./comparison.mp4">
+		Your browser does not support the video tag.
+	</video>
+
+	In the video, you can see that the two methods generated the same visual quality. This is a proof that my mesh shader implementation is correct and it can match the visual quality of the tessellation shader pipeline.
+</p>
+
+<p>
+	However, you might notice that the generated vertex layout is different between the two methods. 
+</p>
+
+<p>
+	<img src="./generated_tess.png" alt="vertex_layout" style="width:50%;max-width:600px"><img src="./generated_mesh.png" alt="vertex_layout" style="width:50%;max-width:600px">
+
+	The left image is the vertex layout generated by the tessellation shader pipeline, and the right image is the vertex layout generated by the mesh shader pipeline. As you can see, the vertex layout generated by the mesh shader pipeline is different from the tessellation shader pipeline. I didn't follow the exact same rule (if there is any) to generate the vertex layout for my mesh shader, so I just choose to generate a more regular grid pattern. This doesn't affect the visual quality of the grass blades, but it might affect the performance of the rendering pipeline.
+</p>
+
+<p>
+	To quickly test the performance, I also pushed the grass blade count to 1M for mesh shader:
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+		<source src="./Mesh_1M.mp4">
+		Your browser does not support the video tag.
+	</video>
+
+	Noted that the framerate is higher, about 22-24fps, with a ~20% improvement. This is just a first impression to see if mesh shader is more efficient than tessellation shader pipeline, even with the overhead of compute shader and also my screen recording software.
+</p>
 
 
-<h2>My Code</h2>
+<h3> One step further: Compute the blade in Mesh Shader Pipeline</h3>
 
-this demo is using infra code from [University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 5 - Vulkan Grass Rendering](https://github.com/CIS565-Fall-2023/Project5-Vulkan-Grass-Rendering). Kudos for their instructors and TAs to produce this infrastructure code for easier implementation!
+<p>
+	To maximize the performance of the mesh shader pipeline, one obvious optimization is to merge the compute shader and mesh shader into one shader. This can reduce the overhead of the compute shader and the data transfer between the compute shader and the mesh shader. 
+</p>
+<p>
+	The setup to merge the compute shader and mesh shader is quite simple, as what I did in <code>meshshader_withcompute.mesh</code> I just need to move the compute shader code to the beginning of the mesh shader and remove the compute shader stage from the pipeline. The mesh shader will now compute the force and apply it to the grass blade, cull the grass blade and use the data to generate the grass blades geometry directly. It would cut 1 read & write from global memory operation for each grass blade, which can be a significant performance improvement on a memory-limited application like this.
+	Here is the result of the merged compute shader and mesh shader pipeline:
+	<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
+		<source src="./Mesh_Comp_1M.mp4">
+		Your browser does not support the video tag.
+	</video>
 
-<h2>Performance Comparison</h2>
+	The performance improvement is huge, with a framerate of around 55fps, which is more than 2x improvement compared to the tessellation shader pipeline. 
+</p>
 
+<h2>Performance Analysis & Comparison</h2>
 
-<h2>Summary & Future Work</h2>
+<p>
+	First of all, to compare the performance of the tessellation shader pipeline and the mesh shader pipeline, I measured the frame time of the three setup under different different grass blade counts:
+</p>
+<p>
+	<img src="./perf_comparison.png" alt="perf_comparison" style="width:100%;max-width:600px">
+</p>
 
+<table>
+	<tr>
+	  <th>Method</th>
+	  <th>Exponent</th>
+	  <th>Frame Time (us)</th>
+	  <th>Improvement (%)</th>
+	</tr>
+	<tr>
+	  <td rowspan="6">Tessellation Shader + Compute Shader</td>
+	  <td>10</td>
+	  <td>419.14</td>
+	  <td>0.00</td>
+	</tr>
+	<tr>
+	  <td>12</td>
+	  <td>546.87</td>
+	  <td>0.00</td>
+	</tr>
+	<tr>
+	  <td>14</td>
+	  <td>942.45</td>
+	  <td>0.00</td>
+	</tr>
+	<tr>
+	  <td>16</td>
+	  <td>2474.93</td>
+	  <td>0.00</td>
+	</tr>
+	<tr>
+	  <td>18</td>
+	  <td>9086.24</td>
+	  <td>0.00</td>
+	</tr>
+	<tr>
+	  <td>20</td>
+	  <td>35028.07</td>
+	  <td>0.00</td>
+	</tr>
+
+	<tr>
+	  <td rowspan="6">Mesh Shader + Compute Shader</td>
+	  <td>10</td>
+	  <td>421.12</td>
+	  <td>-0.47</td>
+	</tr>
+	<tr>
+	  <td>12</td>
+	  <td>522.86</td>
+	  <td>4.39</td>
+	</tr>
+	<tr>
+	  <td>14</td>
+	  <td>835.12</td>
+	  <td>11.39</td>
+	</tr>
+	<tr>
+	  <td>16</td>
+	  <td>2131.84</td>
+	  <td>13.86</td>
+	</tr>
+	<tr>
+	  <td>18</td>
+	  <td>7492.30</td>
+	  <td>17.54</td>
+	</tr>
+	<tr>
+	  <td>20</td>
+	  <td>28807.96</td>
+	  <td>17.76</td>
+	</tr>
+	<tr>
+	  <td rowspan="6">Mesh Shader Standalone</td>
+	  <td>10</td>
+	  <td>406.75</td>
+	  <td>2.96</td>
+	</tr>
+	<tr>
+	  <td>12</td>
+	  <td>462.72</td>
+	  <td>15.39</td>
+	</tr>
+	<tr>
+	  <td>14</td>
+	  <td>606.80</td>
+	  <td>35.61</td>
+	</tr>
+	<tr>
+	  <td>16</td>
+	  <td>1238.72</td>
+	  <td>49.95</td>
+	</tr>
+	<tr>
+	  <td>18</td>
+	  <td>3812.20</td>
+	  <td>58.04</td>
+	</tr>
+	<tr>
+	  <td>20</td>
+	  <td>14048.81</td>
+	  <td>59.89</td>
+	</tr>
+  </table>
+  
+<p>
+	As you can see, under any grass blade count, the mesh shader pipeline is more efficient than the tessellation shader pipeline. The scaling is getting linear around 2^16 grass blades, and the performance improvement is more significant when the grass blade count is higher. The standalone mesh shader pipeline is even more efficient than the mesh shader pipeline with compute shader, which is near <strong>2.5x</strong> perf improvement (60% time cut) compared to the tessellation shader pipeline.
+</p>
+
+<p>
+	To figure out why the performance is better for mesh shader, I did a performance analysis of the three methods using Nsight Graphics by NVIDIA. 
+</p>
+<h3>Tessellation Shader vs Mesh Shader with Compute Shader</h3>
+
+<img src="./analysis_1.png" alt="perf_analysis" style="width:100%;max-width:600px">
+
+<p>
+	This is the comparison between the tessellation shader pipeline and the mesh shader pipeline with compute shader handling the grass simulation and culling under 1M grass blades. From the unit throughputs subgraph, you can see that tessellation shader has really steep up and downs, marking potentially inefficient scheduling of GPU work. In comparison, the mesh shader pipeline has a more stable throughput, which indicates a more efficient scheduling of GPU work. Some other observations:
+	<ul>
+		<li>Compute Shader takes a lot of time, which can be eliminated if combined to mesh shader.</li>
+		<li>Tessellation shader pipeline didn't use any of L1 cache.</li>
+		<li>By only comparing Tessellation Shader pipeline and Mesh Shader Pipeline, Mesh Shader Pipeline has cut 42% of rendering time, which is quite impressive.</li>
+	</ul>
+
+	My educated guess on why tessellation shader pipeline is inefficient is because of poor driver scheduling. From the comb like graph of the unit throughputs, it seems that the tessellation shader pipeline is not well scheduled on the GPU, which leads to a lot of idle time and wasted resources. The mesh shader pipeline, on the other hand, has more sustained throughputs graph.
+</p>
+<h3>Mesh Shader Standalone</h3>
+<p>
+	Here is the graph of mesh shader pipeline also handling the grass simulation and culling under 1M grass blades:
+</p>
+<img src="./analysis_2.png" alt="perf_analysis" style="width:100%;max-width:600px">
+
+<p>
+	This time, one frame only takes <strong>16.99ms</strong>, which compared to 19.61ms + 21.83ms of the tessellation pipeline, is a near <strong>60%</strong> time cut. Even compared to 19.61ms + 12.69ms of the mesh shader pipeline with compute shader, it's still a <strong>47%</strong> time cut. This is because the compute shader is eliminated and the data transfer between compute shader and mesh shader is also eliminated. Although the throughputs and occupancy are lower than the mesh shader pipeline with compute shader, the overall performance is better because of the reduced overhead of the compute shader.
+</p>
+
+<h2>Summary</h2>
+
+<p>
+	In this project, I implemented the grass simulation and rendering pipeline using both tessellation shader and mesh shader in Vulkan. I compared the performance of the two methods under different grass blade counts and analyzed the performance using Nsight Graphics. The results show that the mesh shader pipeline is more efficient than the tessellation shader pipeline, with a near 60% time cut under 1M grass blades, when combined with the compute shader. 
+</p>
+	
+<p>
+	This practice is valuable for me, as I learned:
+	<ul>
+		<li>how to implement a grass simulation and rendering pipeline using tessellation shader and mesh shader in Vulkan</li>
+		<li>how mesh shader pipeline outperforms the tessellation shader pipeline in terms of performance and flexibility (as you can do any computation on it).</li>
+		<li>identify where the bottleneck of tessellation shader is using Nsight Graphics</li>
+	</ul>
+	
+	One thing I would like to improve is to not just guessing what's the bottleneck of the tessellation shader pipeline, but to actually find out the reason. I would like to learn more about the GPU architecture and how the driver schedules the GPU work to find out the reason of the comb-like throughput graph of the tessellation shader pipeline.
+</p>
 
 <h2>Reference</h2>
 
@@ -279,6 +592,10 @@ this demo is using infra code from [University of Pennsylvania, CIS 565: GPU Pro
     <li>
         Vulkan Infrastructure code from UPenn CIS5650 - GPU Programming and Architecture: <a href="https://github.com/CIS565-Fall-2023/Project5-Vulkan-Grass-Rendering">University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 5 - Vulkan Grass Rendering</a> and <a href="https://onedrive.live.com/view.aspx?resid=A6B78147D66DD722%2196872&authkey=!ALJknhlOAyWBM_U">corresponding project instruction slides</a>
     </li>
+	<li>
+		Vulkan Mesh Shader Introduction: <a href="https://indico.freedesktop.org/event/2/contributions/48/attachments/54/79/mesh-shaders-2.pdf">Replacing the geometry pipeline with mesh shaders
+		</a>
+	</li>
     <li>
         Mesh shader implementation on DX12 and HLSL: <a href="https://gpuopen.com/learn/mesh_shaders/mesh_shaders-procedural_grass_rendering/">Procedural grass rendering - Mesh shaders on AMD RDNA™ graphics cards - AMD GPUOpen</a>
     </li>
@@ -286,141 +603,6 @@ this demo is using infra code from [University of Pennsylvania, CIS 565: GPU Pro
         Basic Mesh shader: <a href="https://github.com/SaschaWillems/Vulkan/blob/eedfcc6b74fe9c50025eaceaa8ed70f44b14824a/examples/meshshader/meshshader.cpp#L47">Vulkan/examples/meshshader/meshshader.cpp</a>
     </li>
 </ul>
-
-<h2>Feedback</h2>
-
-
-
-<!-- 
-
-<h3>Loading light objects <span class="atag">A3-load</span></h3> 
-
-<p>
-	For the new <code>"LIGHT"</code> type, I supported a new <code>Light</code> class that inherits from <code>SceneObj</code> so that it can be parsed from the scene json.
-</p>
-<p>
-	To support multiple lights and light referred by different nodes, I used a similar way with the <code>Mesh</code> class to traverse the scene graph every frame to extract all <code>LightInstance</code>s.
-</p>
-<p> 
-	A <code>LightInstance</code> would contain a shared pointer to a <code>Light</code> object and a transformation matrix to transform the light to the world space.
-</p>
-<p>
-	I left the power and tint attributes of each light as non-premultiplied, as the computation in shader is more straightforward and the performance impact is negligible.
-</p>
-
-<h3>Adding Direct Lighting to Materials <span class="atag">A3-materials</span></h3>
-
-<p>
-	To pass light data to the shader, I used a uniform buffer to store all light data and bind it to the shader.
-</p>
-<p><img src="./shader_light.png" alt="shader_light" style="width:100%;max-width:600px"></p>
-
-<p>
-	For every model, I iterate through all <code>LightInstance</code>s and calculate the direct lighting contribution from each light.
-</p>
-
-
-<p>
-	Here is a screenshot showing the scene with Lambertian materials under sphere, spot, and sun lights:
-</p>
-
-<p><img src="./lights_mix.png" alt="lights_mix" style="width:100%;max-width:600px"></p>
-
-Here is a screen recording showing the scene running in real-time under different materials and lights:
-<video controls type="video/mp4" data-fullscreen-container="true" style="max-width: 100%; height: auto;">
-  <source src="../scene/scene.mp4">
-  Your browser does not support the video tag.
-</video>
-<p>
-	In the video, the soldier model on the left is using a Lambertian material, and the one on the right is using a PBR material. The scene is lit with a dynamic point light (rotating around models), a spot light, and a sun light.
-</p>
-<p>
-	As we can see, two models have different shading behaviors under different lights. The Lambertian material is more diffuse and less reflective, while the PBR material is more reflective. I haven't checked the correctness of my PBR implementation, but it looks okay to me.
-</p>
-
-<p>
-	For performance analysis, I set up my scene using [1, 2, 4, 8, 16, 32, 64, 128, 256, 511] sphere lights and measured the frame rate. Here is the graph showing the performance impact of adding additional lights to the scene:
-</p>
-<p><img src="./perf.png" alt="perf" style="width:100%;max-width:600px"></p>
-
-After summarizing the data in the following table:
-
-<table>
-    <tr>
-        <th>Light Source Count</th>
-        <th>Average Frame Time (us)</th>
-        <th>Avg Frame Time / Light Count (us/light)</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>385.996</td>
-        <td>385.996</td>
-    </tr>
-	<tr>
-        <td>2</td>
-        <td>403.923</td>
-        <td>201.962</td>
-    </tr>
-	<tr>
-        <td>4</td>
-        <td>446.864</td>
-        <td>111.716</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>550.047</td>
-        <td>68.756</td>
-    </tr>
-    <tr>
-        <td>16</td>
-        <td>839.341</td>
-        <td>52.459</td>
-    </tr>
-    <tr>
-        <td>32</td>
-        <td>1393.075</td>
-        <td>43.534</td>
-    </tr>
-    <tr>
-        <td>64</td>
-        <td>2564.878</td>
-        <td>40.076</td>
-    </tr>
-    <tr>
-        <td>128</td>
-        <td>5797.862</td>
-        <td>45.295</td>
-    </tr>
-    <tr>
-        <td>256</td>
-        <td>12944.406</td>
-        <td>50.564</td>
-    </tr>
-    <tr>
-        <td>511</td>
-        <td>26972.488</td>
-        <td>52.784</td>
-    </tr>
-</table>
-
-<p>
-	And here is a line graph showing the relationship between the light source count and the average frame time. Both axes are on a logarithmic scale to better display the data across the wide range of values.
-</p>
-
-<p><img src="./perf_2.png" alt="perf_2" style="width:100%;max-width:600px"></p>
-
-<p>
-	As you can see in the graph, as the number of lights increases, the average frame time increases almost linearly. The average frame time per light source is around 50us after light count reaches 16, where we can consider the bottleneck to be light computation.
-</p>
-
-<p>
-	Considering a real-time application, we would expect the frame rate to be around 60fps, which means the frame time should be around 16.67ms. In my estimation, my viewer can handle around 300 light sources at a reasonable frame rate (60fps).
-</p>
-
-<h3>Adding Shadows for Spot Lights <span class="atag">A3-shadows</span></h3>
-I didn't implement shadows for spot lights in this assignment due to the time constraint.
-
-<h2>Feedback</h2> -->
 
 </body>
 </html>
